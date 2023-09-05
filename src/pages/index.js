@@ -3,8 +3,6 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import RootLayout from "@/components/Layouts/RootLayout";
 
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   return (
     <>
@@ -15,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        This is Home Page
+        This is Index Page
       </main>
     </>
   )

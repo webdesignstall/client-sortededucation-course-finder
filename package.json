@@ -15,7 +15,7 @@
     "husky-enable": "npx husky install"
   },
   "lint-staged": {
-    "src/**/*.ts": "yarn lint:check"
+    "src/**/*.{jsx,js}": "yarn run lint:check"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
