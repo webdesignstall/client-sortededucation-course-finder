@@ -15,3 +15,6 @@
 .login-form-button {
   width: 100%;
 }
+.ant-result-icon svg{
+  color: #6B1B1C;
+}
