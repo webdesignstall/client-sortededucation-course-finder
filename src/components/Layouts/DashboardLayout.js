@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import {
     DesktopOutlined,
-    FileOutlined,
+    FileOutlined, LogoutOutlined,
     PieChartOutlined,
     TeamOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import {Avatar, Breadcrumb, Layout, Menu, Space, theme} from 'antd';
+import {logOut} from "@/utilities/sessionHelper";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
     return {
@@ -26,6 +27,7 @@ const items = [
     ]),
     getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
     getItem('Files', '9', <FileOutlined />),
+    getItem(<span onClick={logOut} style={{color: 'orange'}}>Log Out</span>, '10', <LogoutOutlined />),
 ];
 const DashboardLayout = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false);
@@ -45,10 +47,16 @@ const DashboardLayout = ({ children }) => {
             <Layout>
                 <Header
                     style={{
-                        padding: 0,
+                        padding: '10px 20px',
                         background: colorBgContainer,
-                    }}
-                />
+                         }}
+                >
+                    <div style={{display: "flex", justifyContent: 'space-between', alignItems: 'center'}}>
+                        <div></div>
+                        <Avatar size="large" icon={<UserOutlined />} />
+                    </div>
+
+                </Header>
                 <Content
                     style={{
                         margin: '0 16px',

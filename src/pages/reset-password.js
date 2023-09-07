@@ -1,5 +1,5 @@
 import React from 'react';
-import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
+import {KeyOutlined, LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
 import {Button, Card, Checkbox, Col, Form, Input, Row} from 'antd';
 import AuthFromWrapper from "@/components/FormWrapper/AuthFromWrapper";
 import Link from "next/link";
@@ -30,7 +30,7 @@ const LoginPage = () => {
                 >
                     <Input
                         size='large'
-                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        prefix={<KeyOutlined className="site-form-item-icon" />}
                         type="password"
                         placeholder="Password"
                     />
@@ -46,7 +46,7 @@ const LoginPage = () => {
                 >
                     <Input
                         size='large'
-                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        prefix={<KeyOutlined className="site-form-item-icon" />}
                         type="password"
                         placeholder="Confirm Password"
                     />

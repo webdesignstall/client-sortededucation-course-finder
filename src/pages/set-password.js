@@ -1,11 +1,21 @@
-import React from 'react';
-import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
-import {Button, Card, Checkbox, Col, Form, Input, Row} from 'antd';
+import React, {useState} from 'react';
+import {KeyOutlined} from '@ant-design/icons';
+import {Button,   Form, Input} from 'antd';
 import AuthFromWrapper from "@/components/FormWrapper/AuthFromWrapper";
-import Link from "next/link";
+import {useRouter, useSearchParams} from "next/navigation";
+import handleRequest from "@/utilities/handleRequest";
 const LoginPage = () => {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const params = useSearchParams();
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+    const onFinish = async (values) => {
+        values.token = params.get('token');
+        setLoading(true)
+        const result = await handleRequest('post', '/passwords', values)
+        setLoading(false)
+        if (result.success){
+            router.push('/login')
+        }
     };
     return (
 
@@ -30,7 +40,7 @@ const LoginPage = () => {
                 >
                     <Input
                         size='large'
-                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        prefix={<KeyOutlined className="site-form-item-icon" />}
                         type="password"
                         placeholder="Password"
                     />
@@ -46,14 +56,14 @@ const LoginPage = () => {
                 >
                     <Input
                         size='large'
-                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        prefix={<KeyOutlined className="site-form-item-icon" />}
                         type="password"
                         placeholder="Confirm Password"
                     />
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
+                    <Button loading={loading} type="primary" htmlType="submit" className="login-form-button">
                         Set Now
                     </Button>
                 </Form.Item>

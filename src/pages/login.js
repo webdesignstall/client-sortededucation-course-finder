@@ -1,11 +1,20 @@
-import React from 'react';
-import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
-import {Button, Card, Checkbox, Col, Form, Input, Row} from 'antd';
+import React, {useState} from 'react';
+import {KeyOutlined, LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
+import {Button, Card, Checkbox, Col, Form, Input, message, Row} from 'antd';
 import AuthFromWrapper from "@/components/FormWrapper/AuthFromWrapper";
 import Link from "next/link";
+import handleRequest from "@/utilities/handleRequest";
+import {setToken} from "@/utilities/sessionHelper";
 const LoginPage = () => {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const [loading, setLoading] = useState(false);
+    const onFinish = async (values) => {
+        setLoading(true)
+        const result = await handleRequest('post', '/login', values);
+        setLoading(false)
+        if (result.success){
+            setToken(result.data.accessToken);
+            window.location.href = '/dashboard'
+        }
     };
     return (
 
@@ -19,15 +28,15 @@ const LoginPage = () => {
                 onFinish={onFinish}
             >
                 <Form.Item
-                    name="username"
+                    name="email"
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your Username!',
+                            message: 'Please input your Email!',
                         },
                     ]}
                 >
-                    <Input size='large' prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Username" />
+                    <Input size='large' prefix={<MailOutlined className="site-form-item-icon" />} placeholder="email" />
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -40,7 +49,7 @@ const LoginPage = () => {
                 >
                     <Input
                         size='large'
-                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        prefix={<KeyOutlined className="site-form-item-icon" />}
                         type="password"
                         placeholder="Password"
                     />
@@ -56,7 +65,7 @@ const LoginPage = () => {
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
+                    <Button loading={loading} type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
                 </Form.Item>
