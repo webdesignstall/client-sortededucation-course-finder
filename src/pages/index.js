@@ -2,6 +2,8 @@ import Head from 'next/head'
 
 import { Inter } from 'next/font/google'
 import RootLayout from "@/components/Layouts/RootLayout";
+import {Result} from "antd";
+import {SmileOutlined} from "@ant-design/icons";
 
 export default function Home() {
   return (
@@ -13,14 +15,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        This is Index Page
+          <Result
+              icon={<SmileOutlined color='#6B1B1C!important'/>}
+              title={<span style={{textTransform: 'uppercase', color: '#6B1B1C!important', fontWeight: 'bold'}}>We are under construction. Thank You!</span>}
+          />
       </main>
     </>
   )
 }
 
-Home.getLayout = function getLayout(page) {
+/*Home.getLayout = function getLayout(page) {
     return (
         <RootLayout>{page}</RootLayout>
     );
-};
+};*/
