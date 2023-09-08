@@ -12,6 +12,6 @@ export default Dashboard;
 
 Dashboard.getLayout = function getLayout(page) {
     return (
-            <DashboardLayout>{page}</DashboardLayout>
+        <DashboardLayout>{page}</DashboardLayout>
     );
 };

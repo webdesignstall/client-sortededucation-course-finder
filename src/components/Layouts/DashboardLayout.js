@@ -1,39 +1,19 @@
-import React, { useState } from 'react';
-import {
-    DesktopOutlined,
-    FileOutlined, LogoutOutlined,
-    PieChartOutlined,
-    TeamOutlined,
-    UserOutlined,
-} from '@ant-design/icons';
-import {Avatar, Breadcrumb, Layout, Menu, Space, theme} from 'antd';
-import {logOut} from "@/utilities/sessionHelper";
+import React from 'react';
+import {UserOutlined,} from '@ant-design/icons';
+import {Avatar, Breadcrumb, Layout, theme} from 'antd';
 import WithAuth from "@/middleware/WithAuth";
-const { Header, Content, Footer, Sider } = Layout;
-function getItem(label, key, icon, children) {
-    return {
-        key,
-        icon,
-        children,
-        label,
-    };
-}
-const items = [
-    getItem('Option 1', '1', <PieChartOutlined />),
-    getItem('Option 2', '2', <DesktopOutlined />),
-    getItem('User', 'sub1', <UserOutlined />, [
-        getItem('Tom', '3'),
-        getItem('Bill', '4'),
-        getItem('Alex', '5'),
-    ]),
-    getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-    getItem('Files', '9', <FileOutlined />),
-    getItem(<span onClick={logOut} style={{color: 'orange'}}>Log Out</span>, '10', <LogoutOutlined />),
-];
-const DashboardLayout = ({ children }) => {
-    const [collapsed, setCollapsed] = useState(false);
+import SideBarMenu from "@/components/Layouts/SideBarMenu";
+import {useSelector} from "react-redux";
+
+const {Header, Content, Footer, Sider} = Layout;
+
+
+const DashboardLayout = ({children}) => {
+    const {currentUser} = useSelector(state => state.auth);
+    console.log('currentUser', currentUser)
+
     const {
-        token: { colorBgContainer },
+        token: {colorBgContainer},
     } = theme.useToken();
     return (
         <Layout
@@ -41,20 +21,20 @@ const DashboardLayout = ({ children }) => {
                 minHeight: '100vh',
             }}
         >
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                <div className="demo-logo-vertical" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-            </Sider>
+            <SideBarMenu/>
             <Layout>
                 <Header
                     style={{
                         padding: '10px 20px',
                         background: colorBgContainer,
-                         }}
+                    }}
                 >
                     <div style={{display: "flex", justifyContent: 'space-between', alignItems: 'center'}}>
                         <div></div>
-                        <Avatar size="large" icon={<UserOutlined />} />
+                        <div>
+                            {currentUser?.email}<Avatar size="large" icon={<UserOutlined/>}/>
+                        </div>
+
                     </div>
 
                 </Header>
@@ -78,7 +58,7 @@ const DashboardLayout = ({ children }) => {
                             background: colorBgContainer,
                         }}
                     >
-                        Bill is a cat.
+                        {children}
                     </div>
                 </Content>
 

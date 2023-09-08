@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import {Spin} from "antd";
-const AuthLoader = ()=> {
-    // state
+
+const AuthLoader = () => {
+    // slice
     const [count, setCount] = useState(3);
     // hooks
     const router = useRouter();
@@ -15,7 +16,7 @@ const AuthLoader = ()=> {
         // redirect once count is equal to 0
         count === 0 &&
         /*navigate(`/${path}`, {
-            state: location.pathname,
+            slice: location.pathname,
         });*/
         router.push('/')
         // cleanup
@@ -23,7 +24,17 @@ const AuthLoader = ()=> {
     }, [count]);
 
     return (
-        <div style={{ zIndex: 100, display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'white!important', height: '100vh', width: '100%', position: "absolute", left: '0px!important'}}>
+        <div style={{
+            zIndex: 100,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: 'white!important',
+            height: '100vh',
+            width: '100%',
+            position: "absolute",
+            left: '0px!important'
+        }}>
             <Spin tip="Loading" size="large"/>
         </div>
 
