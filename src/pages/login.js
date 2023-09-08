@@ -1,18 +1,22 @@
 import React, {useState} from 'react';
-import {KeyOutlined, LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
-import {Button, Card, Checkbox, Col, Form, Input, message, Row} from 'antd';
+import {KeyOutlined, MailOutlined} from '@ant-design/icons';
+import {Button, Form, Input} from 'antd';
 import AuthFromWrapper from "@/components/FormWrapper/AuthFromWrapper";
 import Link from "next/link";
 import handleRequest from "@/utilities/handleRequest";
 import {setToken} from "@/utilities/sessionHelper";
+import {setAuth} from "@/redux/slice/auth-slice";
+import store from "@/redux/store";
+
 const LoginPage = () => {
     const [loading, setLoading] = useState(false);
     const onFinish = async (values) => {
         setLoading(true)
         const result = await handleRequest('post', '/login', values);
         setLoading(false)
-        if (result.success){
-            setToken(result.data.accessToken);
+        if (result.success) {
+            store.dispatch(setAuth(result?.data?.accessToken));
+            setToken(result?.data?.accessToken);
             window.location.href = '/dashboard'
         }
     };
@@ -36,7 +40,7 @@ const LoginPage = () => {
                         },
                     ]}
                 >
-                    <Input size='large' prefix={<MailOutlined className="site-form-item-icon" />} placeholder="email" />
+                    <Input size='large' prefix={<MailOutlined className="site-form-item-icon"/>} placeholder="email"/>
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -49,7 +53,7 @@ const LoginPage = () => {
                 >
                     <Input
                         size='large'
-                        prefix={<KeyOutlined className="site-form-item-icon" />}
+                        prefix={<KeyOutlined className="site-form-item-icon"/>}
                         type="password"
                         placeholder="Password"
                     />

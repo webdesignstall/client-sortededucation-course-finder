@@ -3,6 +3,8 @@ import {getToken} from "@/utilities/sessionHelper";
 import AuthLoader from "@/components/AuthLoader";
 import handleRequest from "@/utilities/handleRequest";
 import {getDisplayName} from "next/dist/shared/lib/utils";
+import {Provider} from "react-redux";
+import store from "@/redux/store";
 
 const withAuth = (WrappedComponent) => {
     const WithAuthWrapper = (props) => {
@@ -24,7 +26,7 @@ const withAuth = (WrappedComponent) => {
             if (token) authCheck().catch();
         }, [token]);
 
-        return ok ? <WrappedComponent {...props} /> : <AuthLoader path=''/>;
+        return ok ? <Provider store={store}><WrappedComponent {...props} /></Provider> : <AuthLoader path=''/>;
     };
 
     WithAuthWrapper.displayName = `WithAuth(${getDisplayName(WrappedComponent)})`;
