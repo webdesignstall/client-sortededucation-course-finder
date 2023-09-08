@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons';
 import {Avatar, Breadcrumb, Layout, Menu, Space, theme} from 'antd';
 import {logOut} from "@/utilities/sessionHelper";
+import WithAuth from "@/middleware/WithAuth";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
     return {
@@ -85,4 +86,6 @@ const DashboardLayout = ({ children }) => {
         </Layout>
     );
 };
-export default DashboardLayout;
+
+
+export default WithAuth(DashboardLayout);
