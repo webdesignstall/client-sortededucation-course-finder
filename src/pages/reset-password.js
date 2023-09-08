@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {KeyOutlined, LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
 import {Button, Card, Checkbox, Col, Form, Input, Row} from 'antd';
 import AuthFromWrapper from "@/components/FormWrapper/AuthFromWrapper";
 import Link from "next/link";
+import handleRequest from "@/utilities/handleRequest";
+import {useRouter} from "next/navigation";
 const LoginPage = () => {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+    const onFinish = async (values) => {
+        values.email = localStorage.getItem('otpEmail');
+        values.otp = localStorage.getItem('verifyOtp');
+        setLoading(true)
+        const result = await handleRequest('patch', `/passwords`, values);
+        if (result.success){
+            localStorage.removeItem('otpEmail')
+            localStorage.removeItem('verifyOtp')
+            localStorage.removeItem('otpExpireTime')
+            await router.push('/')
+        }
+        setLoading(false)
     };
     return (
 
@@ -53,7 +67,7 @@ const LoginPage = () => {
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
+                    <Button loading={loading} type="primary" htmlType="submit" className="login-form-button">
                         Reset Now
                     </Button>
                     Or <Link href="/login">Login</Link>
