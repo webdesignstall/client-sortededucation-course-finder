@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {LockOutlined, MailOutlined, UserOutlined} from '@ant-design/icons';
 import {Button, Card, Checkbox, Col, Form, Input, Row} from 'antd';
 import AuthFromWrapper from "@/components/FormWrapper/AuthFromWrapper";
 import Link from "next/link";
+import handleRequest from "@/utilities/handleRequest";
+import {useRouter} from "next/navigation";
 const ForgotPasswordPage = () => {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const [loading, setLoading] = useState(false)
+    const router = useRouter();
+    const onFinish = async (values) => {
+        setLoading(true)
+        const result = await handleRequest('get', `/resend-otp/${values.email}`);
+        if (result.success){
+            localStorage.setItem('otpExpireTime', result.data);
+            localStorage.setItem('otpEmail', values.email);
+            await router.push('otp-verify')
+        }
+        setLoading(false)
     };
     return (
 
@@ -31,7 +42,7 @@ const ForgotPasswordPage = () => {
                     <Input size='large' prefix={<MailOutlined className="site-form-item-icon" />} placeholder="email" />
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
+                    <Button loading={loading} type="primary" htmlType="submit" className="login-form-button">
                        Next
                     </Button>
                     Or <Link href="/login">Login</Link>

@@ -1,9 +1,5 @@
 import Head from 'next/head'
-
-import { Inter } from 'next/font/google'
-import RootLayout from "@/components/Layouts/RootLayout";
-import {Result} from "antd";
-import {SmileOutlined} from "@ant-design/icons";
+import UnderConstruction from "@/components/UnderConstruction";
 
 export default function Home() {
   return (
@@ -15,10 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-          <Result
-              icon={<SmileOutlined color='#6B1B1C!important'/>}
-              title={<span style={{textTransform: 'uppercase', color: '#6B1B1C!important', fontWeight: 'bold'}}>We are under construction. Thank You!</span>}
-          />
+          <UnderConstruction/>
       </main>
     </>
   )
