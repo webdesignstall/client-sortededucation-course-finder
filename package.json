@@ -12,7 +12,8 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "prettier:fix": "prettier --write .",
     "lint-prettier": "yarn lint:check && yarn format",
-    "husky-enable": "npx husky install"
+    "husky-enable": "npx husky install",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.{jsx,js}": "yarn run lint:check"
