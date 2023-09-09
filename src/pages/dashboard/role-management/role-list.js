@@ -3,18 +3,20 @@ import SharedTable from "@/components/shared/SharedTable";
 import CreateRoleForm from "@/components/roleManagement/CreateRoleForm";
 import Link from "next/link";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
+import handleRequest from "@/utilities/handleRequest";
+import {useState} from "react";
 
 const RoleList = () => {
+    const [loading, setLoading] = useState(false)
     const deleteHandler = async (roleId, name) => {
         const isConfirm = window.confirm(
             "Are you sure delete - " + name + "- role"
         );
-        /*  if (isConfirm) {
-              const result = await deleteRoleRequest(roleId);
-              if (result.success) {
-                  await getRolesRequest();
-              }
-          }*/
+        if (isConfirm) {
+            setLoading(true)
+            await handleRequest('delete', `roles/${roleId}`)
+            setLoading(false)
+        }
     };
 
     const columns = [
@@ -52,15 +54,16 @@ const RoleList = () => {
                 if (data.name !== "super_admin") {
                     return (
                         <Space wrap key={value}>
+
                             <Link
                                 href={`/dashboard/role-management/permissions/${data.name}?roleId=${value}`}
-                                className="bg-primary-color text-white rounded px-2 py-1"
                             >
-                                Update Permission
+                                <Button type={'primary'}>Update Permission</Button>
                             </Link>
                             <Button
-                                transparented
-                                type="danger"
+                                loading={loading}
+                                type={'primary'}
+                                style={{background: 'orangered'}}
                                 onClick={() => deleteHandler(value, data.name)}
                             >
                                 Delete

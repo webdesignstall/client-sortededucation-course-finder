@@ -10,7 +10,6 @@ const {Header, Content, Footer, Sider} = Layout;
 
 const DashboardLayout = ({children}) => {
     const {currentUser} = useSelector(state => state.auth);
-    console.log('currentUser', currentUser)
 
     const {
         token: {colorBgContainer},
