@@ -53,11 +53,18 @@ const CreateRoleForm = () => {
 
                         <div className="d-flex justify-content-between align-items-center px-4">
                             <div></div>
-                            <div className="d-flex align-items-center gap-3">
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '3'
+                                }}
+                            >
                                 <Form.Item>
                                     <Button
                                         style={{
                                             marginRight: "15px",
+                                            color: 'orangered'
                                         }}
                                         type="default"
                                         onClick={handleCancel}
