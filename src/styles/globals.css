@@ -1,11 +1,24 @@
 :root{
   --bgColor: #6B1B1C;
   --textColor: #E6E5E7;
+  --headingFont:'Norwester', sans-serif;
+  --bodyFont: 'Montserrat', sans-serif;
 }
+html{
+  font-size: 16px;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing:border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--headingFont);
+}
+p {
+  font-size: 1rem;
+  font-family: var(--bodyFont);
 }
 .login-form {
   max-width: 500px;
@@ -43,4 +56,5 @@
 .text-left {
   text-align: left;
 }
+
 
