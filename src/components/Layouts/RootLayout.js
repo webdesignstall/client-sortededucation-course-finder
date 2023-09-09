@@ -37,8 +37,9 @@ const RootLayout = ({ children }) => {
                     alignItems: 'center'
 
                 }}>
-                    <h1 style={{display: 'block'}}>Sorted</h1>
+                    <h1 className='logo'>Sorted</h1>
                     <Menu
+                        className={'menu'}
                         style={{
                             display: "block",
                             backgroundColor: 'transparent'
@@ -52,7 +53,7 @@ const RootLayout = ({ children }) => {
                                     style={{
                                         textDecoration: "none",
                                         color: "white",
-                                        margin: "0px 10px",
+                                        margin: "0px 17px",
                                     }}
                                     key={index + 1}
                                     href={path.route}

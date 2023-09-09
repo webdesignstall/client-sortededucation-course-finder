@@ -7,7 +7,6 @@
 html{
   font-size: 16px;
 }
-
 *{
   margin: 0;
   padding: 0;
@@ -44,7 +43,9 @@ p {
 .header {
   background-color: var(--bgColor);
   height: auto;
+  padding: 2rem 0 0;
 }
+
 .footer {
   background-color: var(--bgColor);
   color: var(--textColor);
@@ -56,5 +57,11 @@ p {
 .text-left {
   text-align: left;
 }
-
-
+.logo {
+  font-size: 3rem;
+  color: var(--textColor)
+}
+.menu {
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
