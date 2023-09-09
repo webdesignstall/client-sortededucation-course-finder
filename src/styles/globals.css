@@ -20,7 +20,7 @@
   width: 100%;
 }
 .ant-result-icon svg{
-  color: #6B1B1C;
+  color: var(--bgColor)
 }
 .container {
   max-width: 1350px;
@@ -43,3 +43,4 @@
 .text-left {
   text-align: left;
 }
+
