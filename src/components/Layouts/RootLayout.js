@@ -1,4 +1,4 @@
-import { Layout, Menu, theme } from "antd";
+import {Col, Layout, Menu, Row, theme} from "antd";
 import Link from "next/link"
 const { Header, Content, Footer } = Layout;
 
@@ -14,77 +14,55 @@ const RootLayout = ({ children }) => {
             route: "/",
         },
         {
+            page: "Service",
+            route: "/service",
+        },        {
             page: "About",
             route: "/about",
         },
         {
             page: "Contact",
             route: "/contact",
-        },
-        {
-            page: "News",
-            route: "/news",
-        },
-        {
-            page: "News_Details",
-            route: "/news/1",
-        },
-        {
-            page: "Filtered_News",
-            route: "/news/details/23-Jun-2022/sports",
-        },
-        {
-            page: "Blog",
-            route: "/news/blog",
-        },
-        {
-            page: "Article",
-            route: "/news/article/sports",
-        },
-        {
-            page: "Admin",
-            route: "/admin",
-        },
-        {
-            page: "Album",
-            route: "/album",
-        },
-        {
-            page: "Dashboard",
-            route: "/dashboard",
         }
+
     ];
 
 
     return (
         <Layout className="layout">
-            <Header
-            >
-                <Menu
-                    style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                    }}
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={["2"]}
-                >
-                    <items>
-                        {paths.map((path, index) => (
-                            <Link
-                                style={{
-                                    textDecoration: "none",
-                                    color: "white",
-                                    margin: "0px 10px",
-                                }}
-                                key={index + 1}
-                                href={path.route}
-                            >
-                                {path.page}
-                            </Link>
-                        ))}
-                    </items>
-                </Menu>
+            <Header className={'header'}>
+                <div className={'container'} style={{
+                    display: "flex",
+                    flexDirection: 'column',
+                    alignItems: 'center'
+
+                }}>
+                    <h1 style={{display: 'block'}}>Sorted</h1>
+                    <Menu
+                        style={{
+                            display: "block",
+                            backgroundColor: 'transparent'
+                        }}
+                        mode="horizontal"
+                        defaultSelectedKeys={["2"]}
+                    >
+                        <items>
+                            {paths.map((path, index) => (
+                                <Link
+                                    style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                        margin: "0px 10px",
+                                    }}
+                                    key={index + 1}
+                                    href={path.route}
+                                >
+                                    {path.page}
+                                </Link>
+                            ))}
+                        </items>
+                    </Menu>
+                </div>
             </Header>
             <Content>
                 <div
@@ -96,12 +74,19 @@ const RootLayout = ({ children }) => {
                     {children}
                 </div>
             </Content>
-            <Footer
-                style={{
-                    textAlign: "center",
-                }}
-            >
-                Ant Design ©2023 Created by Ant UED
+            <Footer className='footer'>
+                <Content className={'container'}>
+                    <Row gutter={16}>
+                        <Col className="gutter-row" span={12}>
+                            <h2> SORTED EDUCATION HELP CENTER</h2>
+                        </Col>
+                        <Col className="gutter-row text-right" span={12}>
+                            <h2>abdulla@sortededucation.com</h2>
+                        </Col>
+                    </Row>
+
+                </Content>
+
             </Footer>
         </Layout>
     );

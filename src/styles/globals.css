@@ -1,3 +1,7 @@
+:root{
+  --bgColor: #6B1B1C;
+  --textColor: #E6E5E7;
+}
 *{
   margin: 0;
   padding: 0;
@@ -17,4 +21,25 @@
 }
 .ant-result-icon svg{
   color: #6B1B1C;
+}
+.container {
+  max-width: 1350px;
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+.header {
+  background-color: var(--bgColor);
+  height: auto;
+}
+.footer {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+  padding: 90px 0;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
 }
