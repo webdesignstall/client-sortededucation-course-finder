@@ -4,7 +4,9 @@ import {Button, Card, Checkbox, Col, Form, Input, Space, Statistic} from 'antd';
 import AuthFromWrapper from "@/components/FormWrapper/AuthFromWrapper";
 import Link from "next/link";
 import handleRequest from "@/utilities/handleRequest";
-import {router} from "next/client";
+import {useRouter} from "next/navigation";
+
+
 const { Countdown } = Statistic;
 
 const OTPVerifyPage = () => {
@@ -12,6 +14,7 @@ const OTPVerifyPage = () => {
     const [loading, setLoading] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
     const [otpExpireTime, setOtpExpireTime] = useState('')
+    const router = useRouter();
 
     useEffect(()=> {
         if (typeof window !== "undefined") {
@@ -78,7 +81,9 @@ const OTPVerifyPage = () => {
                 <div style={{marginBottom: '10px', padding: 0}}>
                     {
                         isOtpExpire ? <Button loading={loading} onClick={handleResendOTP} style={{color: 'green'}}>Resend OTP</Button> :
-                            <><Space> Expire In: <Countdown format={'mm:ss'} value={deadlineDate} onFinish={handleOtpExpire} /> </Space>  </>
+                            <>
+                                <Space> Expire In: <Countdown format={'mm:ss'} value={deadlineDate} onFinish={handleOtpExpire} /> </Space>
+                            </>
                     }
                 </div>
 
