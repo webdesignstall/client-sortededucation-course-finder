@@ -58,10 +58,34 @@ p {
   text-align: left;
 }
 .logo {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: var(--textColor)
 }
 .menu {
   font-size: 1.3rem;
   text-transform: capitalize;
+}
+.page-space {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+.about-us p {
+  color: var(--bgColor);
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  line-height: 1.4em;
+}
+@media screen and (max-width: 767px) {
+  .about-us img {
+    margin-top: 3rem;
+  }
+  .page-space {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.about-us h2 {
+  color: var(--bgColor);
+  font-size: 2rem;
 }
