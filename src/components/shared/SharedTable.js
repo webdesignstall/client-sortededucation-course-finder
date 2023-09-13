@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import handleRequest from "@/utilities/handleRequest";
 
 const {Search} = Input;
-const SharedTable = ({tableColumn, url, RightElement = <></>}) => {
+const SharedTable = ({tableName, tableColumn, url, RightElement = <></>, rerender}) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -32,7 +32,7 @@ const SharedTable = ({tableColumn, url, RightElement = <></>}) => {
 
     useEffect(() => {
         fetchData().catch();
-    }, []);
+    }, [rerender]);
 
     const handleChange = async (value) => {
         await fetchData(`?limit=${value}`);
@@ -47,7 +47,7 @@ const SharedTable = ({tableColumn, url, RightElement = <></>}) => {
 
     return (
         <>
-            <Card title="Role List">
+            <Card title={tableName}>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -121,6 +121,7 @@ const SharedTable = ({tableColumn, url, RightElement = <></>}) => {
 };
 
 SharedTable.propTypes = {
+    tableName: PropTypes.string.isRequired, // Add this line
     tableColumn: PropTypes.array.isRequired, // Add this line
     url: PropTypes.string.isRequired,
     RightElement: PropTypes.element,
