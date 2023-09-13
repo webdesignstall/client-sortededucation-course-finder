@@ -19,15 +19,21 @@ function getItem(label, key, icon, children) {
 const items = [
     getItem(<Link href={'/dashboard'}>Dashboard</Link>, '1',
         <DashboardOutlined/>),
+
+    checkPermission('can_create_course_subject') || checkPermission('can_view_course_subject') ?
+        getItem(<Link href={'/dashboard/subject'}> Course Subject </Link>, '2', <ReadOutlined/>) : "",
+
     checkPermission('can_create_course') || checkPermission('can_view_course') ?
-        getItem('Courses', 'sub1', <ReadOutlined/>, [
-            getItem(<Link href={'/dashboard/course/create'}>Create</Link>, '2'),
-            getItem(<Link href={'/dashboard/course/list'}>List</Link>, '3'),
+        getItem('Courses', 'sub2', <ReadOutlined/>, [
+            getItem(<Link href={'/dashboard/course/create'}>Create</Link>, '3'),
+            getItem(<Link href={'/dashboard/course/list'}>List</Link>, '4'),
         ]) : "",
+
     checkPermission('can_create_role') || checkPermission('can_view_role') ?
-        getItem(<Link href={'/dashboard/role-management/role-list'}>Role Management</Link>, '9',
+        getItem(<Link href={'/dashboard/role-management/role-list'}>Role Management</Link>, '5',
             <BorderOutlined/>) : "",
-    getItem(<span onClick={logOut} style={{color: 'orange'}}>Log Out</span>, '10', <LogoutOutlined/>),
+    
+    getItem(<span onClick={logOut} style={{color: 'orange'}}>Log Out</span>, '6', <LogoutOutlined/>),
 ];
 const SideBarMenu = () => {
     const [collapsed, setCollapsed] = useState(false);

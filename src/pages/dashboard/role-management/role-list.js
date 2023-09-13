@@ -78,6 +78,7 @@ const RoleList = () => {
     return (
         <>
             <SharedTable
+                tableName='Roles'
                 tableColumn={columns}
                 url={'roles'}
                 RightElement={<CreateRoleForm/>}
