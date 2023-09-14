@@ -1,11 +1,12 @@
+import React from 'react';
+import CourseForm from "@/components/course/CourseForm";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
-import CourseList from "@/pages/dashboard/course/list";
 
 const CourseCreate = () => {
     return (
-        <div>
-course create
-        </div>
+        <>
+            <CourseForm/>
+        </>
     );
 };
 
