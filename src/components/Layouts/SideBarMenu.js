@@ -21,7 +21,13 @@ const items = [
         <DashboardOutlined/>),
 
     checkPermission('can_create_course_subject') || checkPermission('can_view_course_subject') ?
-        getItem(<Link href={'/dashboard/subject'}> Course Subject </Link>, '2', <ReadOutlined/>) : "",
+        getItem(<Link href={'/dashboard/subject'}> Subject </Link>, '2', <ReadOutlined/>) : "",
+
+    checkPermission('can_create_course_qualification') || checkPermission('can_view_course_qualification') ?
+        getItem(<Link href={'/dashboard/qualifications'}> Qualification </Link>, 'qualifications', <ReadOutlined/>) : "",
+
+    checkPermission('can_create_course_university') || checkPermission('can_view_course_university') ?
+        getItem(<Link href={'/dashboard/university'}> University </Link>, 'university', <ReadOutlined/>) : "",
 
     checkPermission('can_create_course') || checkPermission('can_view_course') ?
         getItem('Courses', 'sub2', <ReadOutlined/>, [
