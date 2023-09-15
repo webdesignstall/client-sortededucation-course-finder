@@ -1,9 +1,19 @@
+@import url('https://fonts.cdnfonts.com/css/times-new-roman');
+
 :root {
     --bgColor: #6B1B1C;
     --textColor: #E6E5E7;
-    --headingFont: 'Norwester', sans-serif;
-    --bodyFont: 'Montserrat', sans-serif;
+    --headingFont: 'Times New Roman', sans-serif;
+    --bodyFont: 'Times New Roman', sans-serif;
 }
+
+
+
+
+
+
+
+
 
 html {
     font-size: 16px;
@@ -17,14 +27,17 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--headingFont);
+    font-weight: 900;
 }
 
 body {
     font-family: var(--bodyFont);
 }
 
-p {
+p, label, span, a {
     font-size: 1rem;
+    font-family: var(--bodyFont);
+    /*font-weight: 300;*/
 }
 
 .login-form {
@@ -75,8 +88,12 @@ p {
 }
 
 .logo {
-    font-size: 3.5rem;
-    color: var(--textColor)
+    font-size: 3rem;
+    color: var(--textColor);
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1.3em;
+    letter-spacing: 7px;
 }
 
 .menu {
@@ -93,9 +110,9 @@ p {
 .services p,
 .contact p {
     color: var(--bgColor);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     margin-top: 2rem;
-    line-height: 1.4em;
+    line-height: 1.45em;
 }
 
 .services.container {
