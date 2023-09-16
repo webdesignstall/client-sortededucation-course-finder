@@ -8,13 +8,6 @@
 }
 
 
-
-
-
-
-
-
-
 html {
     font-size: 16px;
 }
@@ -152,20 +145,77 @@ p, label, span, a {
 }
 
 .contact .ant-form-item-label label,
-.home .ant-form-item-label label{
+.home .ant-form-item-label label {
     color: var(--bgColor);
     font-size: 1.2rem;
 }
+
 .container.home {
     max-width: 720px;
 }
+
 .home .search-field {
     margin-top: 3rem;
 }
+
 .home .search-label {
     text-align: center;
     font-size: 4rem;
     color: var(--bgColor);
+}
+
+.search-result p {
+    color: var(--bgColor);
+
+}
+
+.search-result table {
+    border: 2px solid var(--bgColor);
+    border-radius: 5px;
+}
+
+
+/* mobile-table.css */
+
+/* Apply a 2px solid black border to the entire table */
+.search-result .ant-table {
+    border-collapse: collapse; /* Ensure borders collapse properly */
+    width: 100%; /* Ensure the table takes up the full width */
+}
+
+.search-result .ant-table-thead > tr > th {
+    border-left: 1px solid var(--bgColor);
+}
+
+.search-result .ant-table-thead > tr > th:first-child {
+    border: none;
+}
+
+.search-result .ant-table-tbody > tr > td {
+    border-left: 1px solid var(--bgColor);
+    border-top: 1px solid var(--bgColor);
+}
+
+.search-result .ant-table-tbody > tr > td:first-child {
+    border-left: none;
+}
+
+.search-result .ant-table-tbody tr:nth-child(odd) {
+    background: #f2f2f2;
+}
+
+.search-result .ant-table-tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+.search-result p,
+.search-result td {
+    font-size: 1.2rem;
+}
+
+.search-result th {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 
@@ -177,5 +227,46 @@ p, label, span, a {
     .page-space {
         margin-top: 5rem;
         margin-bottom: 5rem;
+    }
+}
+
+
+/* mobile-table.css */
+
+/* Style the table for screens with a maximum width of 800px */
+@media (max-width: 800px) {
+    .search-result .ant-table {
+        display: block;
+    }
+
+    .search-result .ant-table-thead {
+        display: none; /* Hide the table header on small screens */
+    }
+
+    .search-result .ant-table-tbody {
+        display: block;
+    }
+
+    .search-result .ant-table-row {
+        border: none;
+        margin-bottom: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-result .ant-table-cell {
+        flex: 1;
+        padding: 8px;
+    }
+
+    .search-result .ant-table-tbody > tr > td {
+        width: 100%;
+        border-left: none;
+        border-bottom: none !important;
+    }
+
+    .search-result .ant-table-tbody > tr > td:first-child {
+        border-top: none;
     }
 }
