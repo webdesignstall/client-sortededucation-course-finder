@@ -2,6 +2,9 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
 import {Col, Row, Table} from "antd";
 import Image from "next/image";
+import handleRequest from "@/utilities/handleRequest";
+import university from "@/pages/dashboard/university";
+import {useRouter} from "next/router";
 
 const data = [
     {
@@ -39,35 +42,52 @@ const columns = [
         title: 'University',
         dataIndex: 'university',
         key: 'university',
-        render: (url) => <img width={300} src={url} alt={"Who We Are"}/>
+        render: (url) => <img width={300} src={url} alt={university?.name}/>
     },
     {
         title: 'Qualification',
-        dataIndex: 'qualification',
-        key: 'qualification',
+        dataIndex: 'name',
+        key: 'name',
         // responsive: ['md'],
         render: (text) => <p>{text}</p>
     },
     {
         title: 'Details',
-        dataIndex: 'details',
-        key: 'details',
+        dataIndex: 'distance',
+        key: 'distance',
         // responsive: ['lg'],
-        render: (text) => (
-            <div dangerouslySetInnerHTML={{__html: text}}/>
-        ),
+        render: (text, items) => {
+            return (
+                // <div dangerouslySetInnerHTML={{__html: text}}/>
+                <>
+                    {
+                        items?.tuitionFees.length > 0 ? <p>Tuition Fees: {items?.tuitionFees}</p> : ''
+                    }
+                    {
+                        items?.totalStudents.length > 0 ? <p>Number of Students: {items?.totalStudents}</p> : ''
+                    }
+                    {
+                        text?.label.length > 0 && text?.value?.length > 0 ? <p>{text?.label}: {text?.value}</p> : ''
+                    }
+
+                    {
+                        items?.campus?.length > 0 ? <p>Campus: {items?.campus}</p> : ''
+                    }
+
+                </>
+            )
+        },
     }, {
         title: 'Location',
-        dataIndex: 'location',
-        key: 'location',
+        dataIndex: 'country',
+        key: 'country',
         // responsive: ['lg'],
         render: (text) => <p>{text}</p>
     },
 ];
 
 
-const SearchResult = () => {
-
+const Universities = ({courses}) => {
     return (
         <>
             <Head>
@@ -77,7 +97,7 @@ const SearchResult = () => {
                 <div className='container page-space search-result'>
                     <Row>
                         <Col xs={24} sm={24} md={24}>
-                            <Table className='search-table' columns={columns} dataSource={data}/>
+                            <Table className='search-table' columns={columns} dataSource={courses}/>
                         </Col>
 
                     </Row>
@@ -88,10 +108,35 @@ const SearchResult = () => {
 }
 
 
-export default SearchResult
+export default Universities
 
-SearchResult.getLayout = function getLayout(page) {
+Universities.getLayout = function getLayout(page) {
     return (
         <RootLayout>{page}</RootLayout>
     );
 };
+
+
+export async function getServerSideProps(context) {
+
+    const {subjectId, qualificationId, universityId} = context.query || {};
+
+    // console.log('universityId', universityId)
+
+    let url = '/courses';
+    if (subjectId) {
+        url = `/courses?subjectId=${subjectId}&qualificationId=${qualificationId}&universityId=${universityId}`
+    } else {
+        url = '/courses'
+    }
+
+    console.log('url',url)
+    const responseCourses = await handleRequest('get', url);
+    console.log('responseCourses', responseCourses);
+    // Pass the data to the component as props
+    return {
+        props: {
+            courses: responseCourses.success ? responseCourses.data : [],
+        },
+    };
+}
