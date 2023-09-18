@@ -119,7 +119,7 @@ const ContactUs = () => {
 
                                 <Form.Item
                                 >
-                                    <Button size={'large'} type="primary" htmlType="submit">
+                                    <Button className='primary-btn' size={'large'} type="primary" htmlType="submit">
                                         Submit
                                     </Button>
                                 </Form.Item>

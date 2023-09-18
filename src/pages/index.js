@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import RootLayout from "@/components/Layouts/RootLayout";
 import {Button, Col, Form, Input, Row, Select} from "antd";
+import React from "react";
+import handleRequest from "@/utilities/handleRequest";
+import Link from "next/link";
+import {useRouter} from 'next/router';
 
+const {Option} = Select;
 
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
@@ -16,54 +21,13 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-const onFinish = (values) => {
-    console.log(values);
-};
 
-const subject = [
-    {
-        label: 'Agriculture',
-        value: 'agriculture'
-    },
-    {
-        label: "Law",
-        value: 'law'
-    },
-    {
-        label: "Medicine",
-        value: "medicine"
-    }
-];
-const qualifacation = [
-    {
-        label: 'Foundation',
-        value: 'foundation'
-    },
-    {
-        label: "Diploma",
-        value: "diploma"
-    },
-    {
-        label: "Ph.D",
-        value: 'phd'
-    }
-];
-const country = [
-    {
-        label: 'United Kingdom',
-        value: 'unitedkingdom'
-    },
-    {
-        label: "United States",
-        value: "unitedstates"
-    },
-    {
-        label: "Canada",
-        value: "canada"
-    }
-];
-
-export default function Home() {
+export default function Home({countries, subjects, qualifications}) {
+    const router = useRouter();
+    const onFinish = (values) => {
+        // console.log(values);
+        router.push(`/universities/?subjectId=${values?.subject}&qualificationId=${values?.qaulification}&universityId=${values?.location}`);
+    };
     return (
         <>
             <Head>
@@ -89,7 +53,26 @@ export default function Home() {
                                             },
                                         ]}
                                     >
-                                        <Select size={'large'} placeholder={'Select a Subject'} showSearch={true} options={subject} />
+                                        {/*<Select size={'large'} placeholder={'Select a Subject'} showSearch={true} options={subject} />*/}
+
+                                        <Select
+                                            size='large'
+                                            placeholder='Select a Subject'
+                                            showSearch
+                                        >
+                                            {
+                                                subjects?.length ? subjects?.map(item => (
+                                                    <Option style={{
+                                                        textTransform: 'uppercase',
+                                                        fontWeight: 'bold',
+                                                        padding: '10px'
+                                                    }} key={item?._id} value={item?._id}>{item?.name}</Option>
+                                                )) : ""
+                                            }
+
+                                        </Select>
+
+
                                     </Form.Item>
                                     <Form.Item
                                         name={'qaulification'}
@@ -100,7 +83,22 @@ export default function Home() {
                                             },
                                         ]}
                                     >
-                                        <Select size={'large'} placeholder={'Select a Qualification'} showSearch={true} options={qualifacation} />
+                                        <Select
+                                            size='large'
+                                            placeholder='Select a Qualification'
+                                            showSearch
+                                        >
+                                            {
+                                                qualifications?.length ? qualifications?.map(item => (
+                                                    <Option style={{
+                                                        textTransform: 'uppercase',
+                                                        fontWeight: 'bold',
+                                                        padding: '10px'
+                                                    }} key={item?._id} value={item?._id}>{item?.name}</Option>
+                                                )) : ""
+                                            }
+
+                                        </Select>
                                     </Form.Item>
                                     <Form.Item
                                         name={'location'}
@@ -111,11 +109,26 @@ export default function Home() {
                                             },
                                         ]}
                                     >
-                                        <Select size={'large'} placeholder={'Select a Location'} showSearch={true} options={country} />
+                                        <Select
+                                            size='large'
+                                            placeholder='Select a Location'
+                                            showSearch
+                                        >
+                                            {
+                                                countries?.length ? countries?.map(item => (
+                                                    <Option style={{
+                                                        textTransform: 'uppercase',
+                                                        fontWeight: 'bold',
+                                                        padding: '10px'
+                                                    }} key={item?._id} value={item?._id}>{item?.country}</Option>
+                                                )) : ""
+                                            }
+
+                                        </Select>
                                     </Form.Item>
                                     <Form.Item
                                     >
-                                        <Button size={'large'} type="primary" htmlType="submit">
+                                        <Button size={'large'} className='primary-btn' type="primary" htmlType="submit">
                                             Search
                                         </Button>
                                     </Form.Item>
@@ -134,3 +147,18 @@ Home.getLayout = function getLayout(page) {
         <RootLayout>{page}</RootLayout>
     );
 };
+
+export async function getServerSideProps() {
+    const responseSubjects = await handleRequest('get', `/course-subjects`);
+    const responseQualifications = await handleRequest('get', `/course-qualifications`);
+    const responseUniversities = await handleRequest('get', `/universities`);
+
+    // Pass the data to the component as props
+    return {
+        props: {
+            countries: responseUniversities.success ? responseUniversities.data : [],
+            subjects: responseSubjects.success ? responseSubjects.data : [],
+            qualifications: responseQualifications.success ? responseQualifications.data : [],
+        },
+    };
+}

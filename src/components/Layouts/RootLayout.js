@@ -16,11 +16,15 @@ const RootLayout = ({children}) => {
             route: "/",
         },
         {
-            page: "Services",
-            route: "/services",
+            page: "Universites",
+            route: "/universities",
         }, {
             page: "About",
             route: "/about",
+        },
+        {
+            page: "Services",
+            route: "/services",
         },
         {
             page: "Contact",
