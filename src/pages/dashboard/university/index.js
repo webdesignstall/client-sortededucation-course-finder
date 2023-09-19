@@ -16,8 +16,8 @@ const CourseUniversity = () => {
     const [form] = Form.useForm();
     const onFinish = async (values) => {
         setLoading(true)
-        const result = await handleRequest(values.id ? 'patch' : 'post' , values.id ? `/universities/${values.id}` : '/universities', values);
-        if (result.success){
+        const result = await handleRequest(values.id ? 'patch' : 'post', values.id ? `/universities/${values.id}` : '/universities', values);
+        if (result.success) {
             setRerender(rerender + 1)
             form.resetFields()
             setIsUniversityId('')
@@ -40,7 +40,7 @@ const CourseUniversity = () => {
     const updateHandler = async (id) => {
         setIsUniversityId(id)
         const result = await handleRequest('get', `universities/${id}`)
-        if (result.success){
+        if (result.success) {
             form.setFieldsValue(result?.data)
         }
     };
@@ -54,7 +54,24 @@ const CourseUniversity = () => {
             title: "University Name",
             dataIndex: "name",
             key: "name",
-            render: (value, _) => value.toUpperCase(),
+            render: (value, _) => value?.toUpperCase(),
+        },
+        {
+            title: "Logo",
+            dataIndex: "logo",
+            key: "logo",
+            render: (urls, items) =>{
+                return <img width={150} src={process.env.NEXT_PUBLIC_ROOT + urls?.secure_url} alt={items.name} />
+            }
+        }, {
+            title: "Ranking",
+            dataIndex: "ranking",
+            key: "ranking"
+        },
+        {
+            title: "Country",
+            dataIndex: "country",
+            key: "country"
         },
         {
             title: "Created Date",
@@ -82,7 +99,7 @@ const CourseUniversity = () => {
                                 style={{background: 'forestgreen'}}
                                 onClick={() => updateHandler(id)}
                             >
-                                <EditOutlined />
+                                <EditOutlined/>
                             </Button>
                             <Button
                                 loading={id === deletingID ? isDeleting : false}
@@ -91,7 +108,7 @@ const CourseUniversity = () => {
                                 style={{background: 'darkorange'}}
                                 onClick={() => deleteHandler(id, data.name)}
                             >
-                                {id === deletingID && isDeleting ? '' : <DeleteOutlined />}
+                                {id === deletingID && isDeleting ? '' : <DeleteOutlined/>}
                             </Button>
                         </Space>
                     );

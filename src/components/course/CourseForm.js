@@ -179,23 +179,23 @@ const CourseForm = ({courseId}) => {
                             </Form.Item>
                         </Col>
                         <Col span={6}>
-                            <Form.Item
-                                label='Country'
-                                name="country"
-                            >
-                                <Select size='large'
-                                        options={[
-                                            {
-                                                label: 'Country One',
-                                                value: 'country one',
-                                            },
-                                            {
-                                                label: 'Country Two',
-                                                value: 'country tne',
-                                            }
-                                        ]}
-                                />
-                            </Form.Item>
+                            {/*<Form.Item*/}
+                            {/*    label='Country'*/}
+                            {/*    name="country"*/}
+                            {/*>*/}
+                            {/*    <Select size='large'*/}
+                            {/*            options={[*/}
+                            {/*                {*/}
+                            {/*                    label: 'Country One',*/}
+                            {/*                    value: 'country one',*/}
+                            {/*                },*/}
+                            {/*                {*/}
+                            {/*                    label: 'Country Two',*/}
+                            {/*                    value: 'country tne',*/}
+                            {/*                }*/}
+                            {/*            ]}*/}
+                            {/*    />*/}
+                            {/*</Form.Item>*/}
                         </Col>
                         <Col span={24}>
                             <Form.List name="distance">
