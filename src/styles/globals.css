@@ -1,12 +1,19 @@
 @import url('https://fonts.cdnfonts.com/css/times-new-roman');
 
+@import url('https://fonts.googleapis.com/css2?family=Maitree:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,700;1,400;1,600;1,800;1,900&display=swap');
+
 :root {
     --bgColor: #6B1B1C;
     --textColor: #E6E5E7;
-    --headingFont: 'Times New Roman', sans-serif;
-    --bodyFont: 'Times New Roman', sans-serif;
+    --headingFont: 'Times New Roman', sans-serif; 
+    --bodyFont: 'Times New Roman', sans-serif; 
+
+    /* --headingFont: 'Maitree', serif;
+    --bodyFont: 'Maitree', serif; */
+
 }
 
+                                                
 
 html {
     font-size: 16px;
@@ -66,11 +73,85 @@ p, label, span, a {
     padding: 2rem 0 0;
 }
 
+/* dip change */
+
+.MainHead{
+        display:flex;
+        flex-direction: column;
+        align-items:center
+
+}
+
+@media (max-width: 767px) {
+    .MainHead{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+}
+  }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+   
+    .MainHead{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+}
+  }
+
+
+/* dip change  end */
+
+
 .footer {
     background-color: var(--bgColor);
     color: var(--textColor);
-    padding: 90px 0;
+    padding: 90px 0;      
 }
+
+.footer-content {
+  
+    font-size:20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.footer-left, .footer-right {
+    margin: 10px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-left, .footer-right {
+        margin: 0;
+
+    }
+
+    .footer-left {
+        flex: 1;
+        text-align:left
+       
+    }
+
+    .footer-right {
+        flex: 1;
+        text-align:right
+        
+    }
+}
+
+  
+
 
 .text-right {
     text-align: right;
@@ -94,9 +175,22 @@ p, label, span, a {
     text-transform: capitalize;
 }
 
+/* dip change */
+
 .page-space {
-    margin-top: 8rem;
-    margin-bottom: 8rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+
+    /* margin-top: 8rem;
+    margin-bottom: 8rem; */
+}
+
+/* dip change */
+
+.ServicesMain{
+    background-image: url("../../public/images/services.jpeg");
+    background-size: cover;
+   
 }
 
 .about-us p,
@@ -118,6 +212,12 @@ p, label, span, a {
 .contact h2 {
     color: var(--bgColor);
     font-size: 2rem;
+}
+
+
+.ContactMain{
+    background-image: url("../../public/images/image-asset.jpeg");
+    background-size: cover;
 }
 
 .services h2 {
@@ -144,6 +244,42 @@ p, label, span, a {
     font-weight: bold;
 }
 
+
+.ContactForm{
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 767px) {
+    
+    .ContactForm{
+        
+        flex-direction: column;
+    }
+    .ContactFormMain{
+        margin-top:50px
+    }
+
+  }
+  
+  
+  @media (min-width: 768px) and (max-width: 1023px) {
+   
+    .ContactForm{
+        
+        flex-direction: column;
+    }
+    .ContactFormMain{
+        margin-top:50px
+    }
+
+   
+
+  }
+  
+
+
+
 .contact .ant-form-item-label label,
 .home .ant-form-item-label label {
     color: var(--bgColor);
@@ -152,17 +288,46 @@ p, label, span, a {
 
 .container.home {
     max-width: 720px;
+   
 }
+
+.HomeMain{
+    background-image: url("../../public/images/image-asset.jpeg");
+    background-size: cover;
+}
+
 
 .home .search-field {
     margin-top: 3rem;
 }
 
+
 .home .search-label {
-    text-align: center;
-    font-size: 4rem;
+    /* text-align: center; */
+    font-size: 5rem;
+    letter-spacing:10.5456px;
     color: var(--bgColor);
 }
+
+  @media (max-width: 767px) {
+    .home .search-label {
+        /* text-align: center; */
+        font-size: 3rem;
+       
+        color: var(--bgColor);
+    }
+  }
+  
+  /* Styles for tablet screens (768px to 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .home .search-label {
+        /* text-align: center; */
+        font-size: 4rem ;
+        color: var(--bgColor);
+    }
+   
+  }
+
 
 .search-result p {
     color: var(--bgColor);
@@ -225,16 +390,26 @@ p, label, span, a {
     background-color: #494848 !important;
 }
 
+.AboutMain{
+    background-image: url("../../public/images/62766.jpg");
+    background-size: cover;
+
+
+}
 
 @media screen and (max-width: 767px) {
     .about-us img {
         margin-top: 3rem;
     }
 
+    /* dip change  */
     .page-space {
-        margin-top: 5rem;
-        margin-bottom: 5rem;
+        /* margin-top: 5rem;
+        margin-bottom: 5rem; */
+          padding-top: 5rem;
+          padding-bottom: 5rem; 
     }
+    /* dip change  */
 }
 
 
@@ -277,3 +452,46 @@ p, label, span, a {
         border-top: none;
     }
 }
+
+
+
+
+.custom-drawer-button {
+    background-color: #6b1b1c; 
+    color: #ffff; 
+    border: none;
+    border-radius: 4px; 
+    padding: 10px 20px; 
+    cursor: pointer;
+  }
+
+  .custom-drawer-button:hover {
+    color: #ffff; /* Custom background color on hover */
+  }
+   
+
+@media (max-width: 767px) {
+    .dextop{
+        display:none
+    }
+  }
+  
+  /* Styles for tablet screens (768px to 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+   
+    .dextop{
+        display:none
+    }
+  }
+  
+  /* Styles for desktop screens (1024px and above) */
+  @media (min-width: 1024px) {
+    
+    .mobileMenu{
+        display:none
+    }
+  }
+
+
+
+/* menu end */

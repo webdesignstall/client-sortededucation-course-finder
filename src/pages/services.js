@@ -30,7 +30,7 @@ const Services = () => {
             <Head>
                 <title>Services</title>
             </Head>
-            <main>
+            <main className="ServicesMain"yar>
                 <div className='container page-space services'>
                     <Row>
                         <Col xs={24} sm={24} md={24}>

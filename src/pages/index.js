@@ -29,11 +29,12 @@ export default function Home({countries, subjects, qualifications}) {
         router.push(`/universities/?subjectId=${values?.subject}&qualificationId=${values?.qaulification}&universityId=${values?.location}`);
     };
     return (
+        
         <>
             <Head>
                 <title>Enroll and Excel</title>
             </Head>
-            <main>
+            <main className='HomeMain'>
                 <div className='container page-space home'>
                     <Row>
                         <Col md={24}>
@@ -43,10 +44,12 @@ export default function Home({countries, subjects, qualifications}) {
                                     name="contact"
                                     onFinish={onFinish}
                                     validateMessages={validateMessages}
+                                    layout={'vertical'}
                                 >
                                     <Form.Item
                                         name={'subject'}
                                         label="Select a Subject:"
+                                        
                                         rules={[
                                             {
                                                 required: true,
