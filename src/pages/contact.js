@@ -27,7 +27,7 @@ const ContactUs = () => {
             <Head>
                 <title>Contact Us</title>
             </Head>
-            <main>
+            <main className="ContactMain" >
                 <div className='container page-space contact'>
                     <Row>
                         <Col xs={24} sm={24} md={11}>
@@ -64,34 +64,50 @@ const ContactUs = () => {
                         <Col xs={0} sm={0} md={2}></Col>
                         <Col xs={24} sm={24} md={11} style={{display: 'flex', alignItems: 'center'}}>
                             <Form
+                                className="ContactFormMain"
                                 name="contact"
                                 onFinish={onFinish}
                                 validateMessages={validateMessages}
                                 layout={'vertical'}
                                 style={{width: '100%'}}
                             >
-                                <Form.Item
-                                    name={'firstName'}
-                                    label="First Name"
-                                    rules={[
-                                        {
-                                            required: true,
-                                        },
-                                    ]}
-                                >
-                                    <Input size={'large'}/>
-                                </Form.Item>
-                                <Form.Item
-                                    name={'lastName'}
-                                    label="Last Name"
-                                    rules={[
-                                        {
-                                            required: true,
-                                        },
-                                    ]}
-                                >
-                                    <Input size={'large'}/>
-                                </Form.Item>
+                            
+
+<div className="ContactForm" >
+  <div style={{ width: '100%' , marginRight: '20px' }}>
+    <Form.Item
+      name={'firstName'}
+      label="First Name"
+      rules={[
+        {
+          required: true,
+        },
+      ]}
+    >
+      <Input style={{ width: '100%' }} size="large" />
+    </Form.Item>
+  </div>
+  <div style={{ width: '100%', }}>
+    <Form.Item
+      name={'lastName'}
+      label="Last Name"
+      rules={[
+        {
+          required: true,
+        },
+      ]}
+    >
+      <Input style={{ width: '100%' }} size="large" />
+    </Form.Item>
+  </div>
+</div>
+
+
+
+
+
+
+
                                 <Form.Item
                                     name={'email'}
                                     label="Email"

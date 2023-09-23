@@ -11,7 +11,7 @@ const AboutUs = () => {
             <Head>
                 <title>About Us</title>
             </Head>
-            <main>
+            <main className='AboutMain' >
                 <div className='container page-space about-us'>
                     <Row className='about-row'>
                         <Col xs={24} sm={24} md={11}>
