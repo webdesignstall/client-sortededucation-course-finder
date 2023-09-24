@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import handleRequest from "@/utilities/handleRequest";
 
 const {Search} = Input;
-const SharedTable = ({tableName, tableColumn, url, RightElement = <></>, rerender, scroll = {} }) => {
+const SharedTable = ({tableName, tableColumn, url, RightElement = <></>, rerender, scroll = {}, expandable = {}, rowKey = ()=> {} }) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -115,6 +115,8 @@ const SharedTable = ({tableName, tableColumn, url, RightElement = <></>, rerende
                     loading={loading}
                     key={data?.length}
                     scroll={scroll}
+                    expandable={expandable}
+                    rowKey={rowKey}
                 />
             </Card>
         </>
