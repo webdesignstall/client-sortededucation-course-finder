@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Link from "next/link";
-import {BorderOutlined, DashboardOutlined, LogoutOutlined, ReadOutlined} from "@ant-design/icons";
+import {BorderOutlined, DashboardOutlined, HomeOutlined, LogoutOutlined, ReadOutlined} from "@ant-design/icons";
 import {logOut} from "@/utilities/sessionHelper";
 import {Layout, Menu} from "antd";
 import {checkPermission} from "@/utilities/checkPermission";
@@ -17,6 +17,9 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
+    getItem(<Link href={'/'}>Home</Link>, 'home',
+        <HomeOutlined />),
+
     getItem(<Link href={'/dashboard'}>Dashboard</Link>, '1',
         <DashboardOutlined/>),
 
