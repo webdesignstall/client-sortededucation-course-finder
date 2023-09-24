@@ -35,6 +35,12 @@ const items = [
             getItem(<Link href={'/dashboard/course/list'}>List</Link>, '4'),
         ]) : "",
 
+    checkPermission('can_user_create') || checkPermission('can_view_user') ?
+        getItem('Employee', 'sub3', <ReadOutlined/>, [
+            getItem(<Link href={'/dashboard/employee/create'}>Create</Link>, '7'),
+            getItem(<Link href={'/dashboard/employee/list'}>List</Link>, '8'),
+        ]) : "",
+
     checkPermission('can_view_contactUs') ?
         getItem(<Link href={'/dashboard/contact-us'}> Contact US </Link>, 'contact-us', <ReadOutlined/>) : "",
 
