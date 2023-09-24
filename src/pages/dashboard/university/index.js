@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Card, Col, Form, Input, Row, Space} from "antd";
+import {Button, Card, Col, Form, Input, Row, Space, Upload} from "antd";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import SharedTable from "@/components/shared/SharedTable";
 import moment from "moment";
@@ -12,11 +12,19 @@ const CourseUniversity = () => {
     const [loading, setLoading] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
     const [subjectId, setIsUniversityId] = useState('')
+    const [fileList, setFileList] = useState([])
 
     const [form] = Form.useForm();
     const onFinish = async (values) => {
+        const formData = new FormData();
+        formData.append('name', values.name);
+        formData.append('ranking', values.ranking);
+        formData.append('country', values.country);
+        formData.append('logo', fileList[0]?.originFileObj || {});
+
         setLoading(true)
-        const result = await handleRequest(values.id ? 'patch' : 'post', values.id ? `/universities/${values.id}` : '/universities', values);
+        const result = await handleRequest(values.id ? 'patch' : 'post', values.id ? `/universities/${values.id}` : '/universities', formData, {'Content-Type': "multipart/form-data"});
+
         if (result.success) {
             setRerender(rerender + 1)
             form.resetFields()
@@ -61,7 +69,7 @@ const CourseUniversity = () => {
             dataIndex: "logo",
             key: "logo",
             render: (urls, items) =>{
-                return <img width={150} src={process.env.NEXT_PUBLIC_ROOT + urls?.secure_url} alt={items.name} />
+                return <img width={150}  src={ process.env.NEXT_PRODUCTION === 'yes' ?  process.env.NEXT_PUBLIC_ROOT + urls?.secure_url : urls?.secure_url} alt={items.name} />
             }
         }, {
             title: "Ranking",
@@ -117,6 +125,25 @@ const CourseUniversity = () => {
         },
     ];
 
+    const onChange = ({ fileList: newFileList }) => {
+        setFileList(newFileList);
+    };
+
+    const onPreview = async (file) => {
+        let src = file.url;
+        if (!src) {
+            src = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file.originFileObj);
+                reader.onload = () => resolve(reader.result);
+            });
+        }
+        const image = new Image();
+        image.src = src;
+        const imgWindow = window.open(src);
+        imgWindow?.document.write(image.outerHTML);
+    };
+
     return (
         <>
             <Row gutter={32}>
@@ -147,6 +174,36 @@ const CourseUniversity = () => {
                                 ]}
                             >
                                 <Input/>
+                            </Form.Item>
+                            <Form.Item
+                                label='Ranking'
+                                name="ranking"
+                            >
+                                <Input/>
+                            </Form.Item>
+                            <Form.Item
+                                label='Country'
+                                name="country"
+                            >
+                                <Input/>
+                            </Form.Item>
+                            <Form.Item
+                                label=""
+                                name="logo"
+                                style={{width: '100%'}}
+                            >
+
+                                    <Upload
+                                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                        listType="picture-card"
+                                        fileList={fileList}
+                                        onChange={onChange}
+                                        onPreview={onPreview}
+                                        maxCount={1}
+                                    >
+                                        {fileList.length < 1 && '+ Photo'}
+                                    </Upload>
+
                             </Form.Item>
                             <Form.Item
                                 hidden
