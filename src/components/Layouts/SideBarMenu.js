@@ -35,6 +35,9 @@ const items = [
             getItem(<Link href={'/dashboard/course/list'}>List</Link>, '4'),
         ]) : "",
 
+    checkPermission('can_view_contactUs') ?
+        getItem(<Link href={'/dashboard/contact-us'}> Contact US </Link>, 'contact-us', <ReadOutlined/>) : "",
+
     checkPermission('can_create_role') || checkPermission('can_view_role') ?
         getItem(<Link href={'/dashboard/role-management/role-list'}>Role Management</Link>, '5',
             <BorderOutlined/>) : "",
