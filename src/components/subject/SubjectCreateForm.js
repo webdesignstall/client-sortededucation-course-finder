@@ -1,13 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const SubjectCreateForm = () => {
-
-
-    return (
-        <>
-
-        </>
-    );
+  return <></>;
 };
 
 export default SubjectCreateForm;

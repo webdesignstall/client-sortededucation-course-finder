@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useState } from "react";
 const { Header, Content, Footer } = Layout;
-import {MenuOutlined } from "@ant-design/icons"
+import { MenuOutlined } from "@ant-design/icons";
 
 const RootLayout = ({ children }) => {
   const {
@@ -50,80 +50,66 @@ const RootLayout = ({ children }) => {
       </Head>
       <Layout className="layout">
         <Header className={"header"}>
-          <div
-            className={"container   MainHead"}
-           
-          >
+          <div className={"container   MainHead"}>
             <div className="">
-            <Link href="/">
-              <h1 className="logo">Sorted</h1>
-            </Link>
-
+              <Link href="/">
+                <h1 className="logo">Sorted</h1>
+              </Link>
             </div>
-           
-           <div className="">
-             <div className="dextop">
-              <Menu
-                className={"menu "}
-                style={{
-                  
-                  display: "block",
-                  backgroundColor: "transparent",
-                }}
-                mode="horizontal"
-                defaultSelectedKeys={["2"]}
-              >
-                <items>
+
+            <div className="">
+              <div className="dextop">
+                <Menu
+                  className={"menu "}
+                  style={{
+                    display: "block",
+                    backgroundColor: "transparent",
+                  }}
+                  mode="horizontal"
+                  defaultSelectedKeys={["2"]}
+                >
+                  <items>
+                    {paths.map((path, index) => (
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "white",
+                          margin: "0px 18px",
+                          fontSize: "28px",
+                        }}
+                        key={index + 1}
+                        href={path.route}
+                      >
+                        {path.page}
+                      </Link>
+                    ))}
+                  </items>
+                </Menu>
+              </div>
+
+              <div className={"mobileMenu "}>
+                <Button className="custom-drawer-button" onClick={showDrawer}>
+                  <MenuOutlined style={{ fontSize: "30px" }} />
+                </Button>
+                <Drawer placement="right" onClose={onClose} open={open}>
                   {paths.map((path, index) => (
                     <Link
+                      className="MobileMenuLink"
                       style={{
                         textDecoration: "none",
-                        color: "white",
-                        margin: "0px 18px",
-                        fontSize:"28px"
+                        lineHeight: "26px",
+                        color: "black",
+                        margin: "0 17px",
                       }}
                       key={index + 1}
                       href={path.route}
                     >
-                      {path.page}
+                      <p style={{ fontSize: "35px" }}> {path.page}</p>
                     </Link>
                   ))}
-                </items>
-              </Menu>
+                </Drawer>
+              </div>
             </div>
-
-            <div className={"mobileMenu "}>
-              <Button className="custom-drawer-button" onClick={showDrawer}>
-              <MenuOutlined style={{ fontSize: '30px' }} />
-              </Button>
-              <Drawer
-                placement="right"
-                onClose={onClose}
-                open={open}
-              >
-               
-                  {paths.map((path, index) => (
-                    <Link className="MobileMenuLink"
-                      style={{
-                        textDecoration: 'none',
-                        lineHeight:"26px" ,
-                        color: 'black',
-                        margin: '0 17px'                
-                      }}
-                      key={index + 1}
-                      href={path.route}
-                    >
-                      
-                      <p style={{ fontSize: '35px'}}> {path.page}</p>
-                    </Link>
-                  ))}
-              
-              </Drawer>
-            </div>
-             </div>
-
-            
-
           </div>
         </Header>
         <Content>
@@ -138,23 +124,15 @@ const RootLayout = ({ children }) => {
         </Content>
         <Footer className="footer">
           <Content className={"container"}>
-          
-          <div className="footer-content">
-            <div className="footer-left">
+            <div className="footer-content">
+              <div className="footer-left">
                 <h2>SORTED EDUCATION HELP CENTER</h2>
-                
+              </div>
+              <div className="footer-right">
+                <h2>abdulla@sortededucation.com</h2>
+              </div>
             </div>
-            <div className="footer-right">
-            <h2>abdulla@sortededucation.com</h2>
-               
-            </div>
-        </div>
-
-
           </Content>
-          
-
-
         </Footer>
       </Layout>
     </>
