@@ -3,6 +3,8 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
 import { Button, Form, Input, InputNumber, Col, Row } from "antd";
+import handleRequest from "@/utilities/handleRequest";
+import ContacImage from "../../public/images/image-asset.jpeg";
 
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
@@ -17,16 +19,33 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-const onFinish = (values) => {
-  console.log(values);
-};
 const ContactUs = () => {
+  const [form] = Form.useForm();
+
+  const onFinish = async (values) => {
+    const name = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+    };
+    const { email, message } = values;
+
+    const data = { name, email, message };
+
+    const result = await handleRequest("post", "/contact-us", data);
+
+    form.resetFields();
+  };
+  const ImageStyle = {
+    backgroundImage: `url('${ContacImage.src}')`,
+    backgroundSize: "cover",
+  };
+
   return (
     <>
       <Head>
         <title>Contact Us</title>
       </Head>
-      <main className="ContactMain">
+      <main style={ImageStyle}>
         <div className="container page-space contact">
           <Row>
             <Col xs={24} sm={24} md={11}>
@@ -70,6 +89,7 @@ const ContactUs = () => {
               style={{ display: "flex", alignItems: "center" }}
             >
               <Form
+                form={form}
                 className="ContactFormMain"
                 name="contact"
                 onFinish={onFinish}

@@ -2,6 +2,7 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
 import { Col, Collapse, Row } from "antd";
+import ServicesImage from "../../public/images/services.jpeg";
 
 const items = [
   {
@@ -47,12 +48,17 @@ const items = [
 ];
 
 const Services = () => {
+  const ImageStyle = {
+    backgroundImage: `url('${ServicesImage.src}')`,
+    backgroundSize: "cover",
+  };
+
   return (
     <>
       <Head>
         <title>Services</title>
       </Head>
-      <main className="ServicesMain" yar>
+      <main style={ImageStyle}>
         <div className="container page-space services">
           <Row>
             <Col xs={24} sm={24} md={24}>
