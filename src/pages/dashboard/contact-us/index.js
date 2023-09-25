@@ -126,7 +126,7 @@ const CourseSubject = () => {
                 RightElement={<></>}
                 rerender={rerender}
                 expandable={expandable}
-                rowKey={(obj) => obj.id}
+                rowKey={(obj) => obj._id}
             />
         </>
     );

@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import RootLayout from "@/components/Layouts/RootLayout";
-import {Button, Col, Form, Input, Row, Select} from "antd";
+import {Button, Col, Form, Row, Select} from "antd";
 import React from "react";
 import handleRequest from "@/utilities/handleRequest";
-import Link from "next/link";
 import {useRouter} from 'next/router';
 
 const {Option} = Select;
@@ -25,7 +24,6 @@ const validateMessages = {
 export default function Home({countries, subjects, qualifications}) {
     const router = useRouter();
     const onFinish = (values) => {
-        // console.log(values);
         router.push(`/universities/?subjectId=${values?.subject}&qualificationId=${values?.qaulification}&universityId=${values?.location}`);
     };
     return (
@@ -123,7 +121,7 @@ export default function Home({countries, subjects, qualifications}) {
                                                         textTransform: 'uppercase',
                                                         fontWeight: 'bold',
                                                         padding: '10px'
-                                                    }} key={item?._id} value={item?._id}>{item?.country}</Option>
+                                                    }} key={item?.id} value={item?.id}>{item?._id}</Option>
                                                 )) : ""
                                             }
 
@@ -154,7 +152,7 @@ Home.getLayout = function getLayout(page) {
 export async function getServerSideProps() {
     const responseSubjects = await handleRequest('get', `/course-subjects`);
     const responseQualifications = await handleRequest('get', `/course-qualifications`);
-    const responseUniversities = await handleRequest('get', `/universities`);
+    const responseUniversities = await handleRequest('get', `/countries`);
 
     // Pass the data to the component as props
     return {
