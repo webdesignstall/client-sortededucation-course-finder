@@ -1,7 +1,9 @@
 module.exports = {
-    apps : [{
-        name: "sortededucation",
-        script: "yarn start",
-        port: 3000
-    }]
-}
+  apps: [
+    {
+      name: "sortededucation",
+      script: "yarn start",
+      port: 3000,
+    },
+  ],
+};

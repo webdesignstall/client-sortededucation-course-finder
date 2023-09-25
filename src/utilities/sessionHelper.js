@@ -1,31 +1,31 @@
 class SessionHelper {
+  setToken = (token) => {
+    if (typeof window !== "undefined") {
+      // Access localStorage here
+      // For example:
+      localStorage.setItem("token", token);
+    }
+  };
 
-    setToken = (token)=>{
-        if (typeof window !== "undefined") {
-            // Access localStorage here
-            // For example:
-            localStorage.setItem('token', token)
-        }
+  getToken = () => {
+    if (typeof window !== "undefined") {
+      // Access localStorage here
+      // For example:
+      return localStorage.getItem("token");
     }
-
-    getToken = ()=>{
-        if (typeof window !== "undefined") {
-            // Access localStorage here
-            // For example:
-            return localStorage.getItem('token')
-        }
+  };
+  localStorageGetItem = (item) => {
+    if (typeof window !== "undefined") {
+      // Access localStorage here
+      // For example:
+      return localStorage.getItem(item);
     }
-    localStorageGetItem = (item)=>{
-        if (typeof window !== "undefined") {
-            // Access localStorage here
-            // For example:
-            return localStorage.getItem(item)
-        }
-    }
-    logOut = ()=>{
-        localStorage.removeItem('token')
-        window.location.href = '/'
-    }
+  };
+  logOut = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
 }
 
-export const {setToken, getToken, logOut, localStorageGetItem} = new SessionHelper();
+export const { setToken, getToken, logOut, localStorageGetItem } =
+  new SessionHelper();
