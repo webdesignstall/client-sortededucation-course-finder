@@ -187,12 +187,6 @@ p, label, span, a {
 
 /* dip change */
 
-.ServicesMain{
-    background-image: url("../../public/images/services.jpeg");
-    background-size: cover;
-   
-}
-
 .about-us p,
 .services p,
 .contact p {
@@ -215,10 +209,6 @@ p, label, span, a {
 }
 
 
-.ContactMain{
-    background-image: url("../../public/images/image-asset.jpeg");
-    background-size: cover;
-}
 
 .services h2 {
     margin-bottom: 2rem;
@@ -291,28 +281,24 @@ p, label, span, a {
    
 }
 
-.HomeMain{
-    background-image: url("../../public/images/image-asset.jpeg");
-    background-size: cover;
-}
 
 
 .home .search-field {
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 
 .home .search-label {
     /* text-align: center; */
-    font-size: 5rem;
-    letter-spacing:10.5456px;
+    font-size: 2rem;
+    letter-spacing:3px;
     color: var(--bgColor);
 }
 
   @media (max-width: 767px) {
     .home .search-label {
         /* text-align: center; */
-        font-size: 3rem;
+        font-size: 2rem;
        
         color: var(--bgColor);
     }
@@ -322,7 +308,7 @@ p, label, span, a {
   @media (min-width: 768px) and (max-width: 1023px) {
     .home .search-label {
         /* text-align: center; */
-        font-size: 4rem ;
+        font-size: 2rem ;
         color: var(--bgColor);
     }
    
@@ -390,12 +376,6 @@ p, label, span, a {
     background-color: #494848 !important;
 }
 
-.AboutMain{
-    background-image: url("../../public/images/62766.jpg");
-    background-size: cover;
-
-
-}
 
 @media screen and (max-width: 767px) {
     .about-us img {

@@ -4,6 +4,7 @@ import { Button, Col, Form, Row, Select } from "antd";
 import React from "react";
 import handleRequest from "@/utilities/handleRequest";
 import { useRouter } from "next/router";
+import HomeImage from "../../public/images/image-asset.jpeg";
 
 const { Option } = Select;
 
@@ -27,12 +28,18 @@ export default function Home({ countries, subjects, qualifications }) {
       `/universities/?subjectId=${values?.subject}&qualificationId=${values?.qaulification}&universityId=${values?.location}`,
     );
   };
+
+  const ImageStyle = {
+    backgroundImage: `url('${HomeImage.src}')`,
+    backgroundSize: "cover",
+  };
+
   return (
     <>
       <Head>
         <title>Enroll and Excel</title>
       </Head>
-      <main className="HomeMain">
+      <main style={ImageStyle}>
         <div className="container page-space home">
           <Row>
             <Col md={24}>

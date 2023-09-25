@@ -2,14 +2,21 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
 import { Col, Row } from "antd";
 import Image from "next/image";
+import AboutImage from "../../public/images/62766.jpg";
+import handleRequest from "@/utilities/handleRequest";
 
 const AboutUs = () => {
+  const ImageStyle = {
+    backgroundImage: `url('${AboutImage.src}')`,
+    backgroundSize: "cover",
+  };
+
   return (
     <>
       <Head>
         <title>About Us</title>
       </Head>
-      <main className="AboutMain">
+      <main style={ImageStyle}>
         <div className="container page-space about-us">
           <Row className="about-row">
             <Col xs={24} sm={24} md={11}>
