@@ -57,8 +57,9 @@ const CourseList = () => {
     },
     {
       title: "Country",
-      dataIndex: "country",
+      dataIndex: "university",
       key: "country",
+      render: (university) => university?.country,
     },
     {
       title: "Tuition Fees",

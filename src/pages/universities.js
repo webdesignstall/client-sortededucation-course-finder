@@ -1,6 +1,6 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
-import { Col, Row, Skeleton, Table } from "antd";
+import { Col, Row, Table } from "antd";
 import handleRequest from "@/utilities/handleRequest";
 import Image from "next/image";
 
@@ -73,15 +73,11 @@ const Universities = ({ courses }) => {
         <div className="container page-space search-result">
           <Row>
             <Col xs={24} sm={24} md={24}>
-              {courses?.length ? (
-                <Table
-                  className="search-table"
-                  columns={columns}
-                  dataSource={courses}
-                />
-              ) : (
-                <Skeleton></Skeleton>
-              )}
+              <Table
+                className="search-table"
+                columns={columns}
+                dataSource={courses}
+              />
             </Col>
           </Row>
         </div>
@@ -101,7 +97,7 @@ export async function getServerSideProps(context) {
 
   let url = "/courses";
   if (subjectId) {
-    url = `/courses?subjectId=${subjectId}&qualificationId=${qualificationId}&universityId=${universityId}`;
+    url = `/courses?subjectId=${subjectId}&qualificationId=${qualificationId}&university.country=${universityId}`;
   } else {
     url = "/courses";
   }

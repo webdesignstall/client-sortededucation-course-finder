@@ -107,9 +107,9 @@ const CourseUniversity = () => {
       key: "logo",
       render: (urls, items) => {
         return (
-          <Image
-            width={150}
-            height={80}
+          <img
+            width={200}
+            height={120}
             src={urls?.secure_url}
             alt={items.name}
           />
