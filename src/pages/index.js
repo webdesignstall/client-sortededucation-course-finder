@@ -131,7 +131,7 @@ export default function Home({ countries, subjects, qualifications }) {
                                 padding: "10px",
                               }}
                               key={item?.id}
-                              value={item?.id}
+                              value={item?._id}
                             >
                               {item?._id}
                             </Option>
