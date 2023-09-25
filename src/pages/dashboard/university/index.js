@@ -5,6 +5,7 @@ import SharedTable from "@/components/shared/SharedTable";
 import moment from "moment";
 import handleRequest from "@/utilities/handleRequest";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import Image from "next/image";
 
 const CourseUniversity = () => {
     const [rerender, setRerender] = useState(0)
@@ -29,6 +30,7 @@ const CourseUniversity = () => {
             setRerender(rerender + 1)
             form.resetFields()
             setIsUniversityId('')
+            setFileList([])
         }
         setLoading(false)
     }
@@ -50,13 +52,43 @@ const CourseUniversity = () => {
         const result = await handleRequest('get', `universities/${id}`)
         if (result.success) {
             form.setFieldsValue(result?.data)
+            const photo = result.data?.logo?.secure_url ? [
+                {
+                    uid: '-1',
+                    name: 'image.png',
+                    status: 'done',
+                    url: result.data?.logo?.secure_url
+                },
+            ] : [];
+            setFileList(photo)
         }
     };
     const onReset = () => {
         form.resetFields();
         setIsUniversityId('')
+        setFileList([])
     };
 
+
+
+    const onChange = ({ fileList: newFileList }) => {
+        setFileList(newFileList);
+    };
+
+    const onPreview = async (file) => {
+        let src = file.url;
+        if (!src) {
+            src = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file.originFileObj);
+                reader.onload = () => resolve(reader.result);
+            });
+        }
+        const image = new Image();
+        image.src = src;
+        const imgWindow = window.open(src);
+        imgWindow?.document.write(image.outerHTML);
+    };
     const columns = [
         {
             title: "University Name",
@@ -69,7 +101,7 @@ const CourseUniversity = () => {
             dataIndex: "logo",
             key: "logo",
             render: (urls, items) =>{
-                return <img width={150}  src={ process.env.NEXT_PRODUCTION === 'yes' ?  process.env.NEXT_PUBLIC_ROOT + urls?.secure_url : urls?.secure_url} alt={items.name} />
+                return <Image width={150} height={80} src={ urls?.secure_url} alt={items.name} />
             }
         }, {
             title: "Ranking",
@@ -85,13 +117,13 @@ const CourseUniversity = () => {
             title: "Created Date",
             dataIndex: "createdAt",
             key: "createdAt",
-            render: (value, _) => moment(value).format('LLL'),
+            render: (value, _) => moment(value).format('LL'),
         },
         {
             title: "Updated Date",
             dataIndex: "updatedAt",
             key: "updatedAt",
-            render: (value, _) => moment(value).format('LLL'),
+            render: (value, _) => moment(value).format('LL'),
         },
 
         {
@@ -125,25 +157,6 @@ const CourseUniversity = () => {
         },
     ];
 
-    const onChange = ({ fileList: newFileList }) => {
-        setFileList(newFileList);
-    };
-
-    const onPreview = async (file) => {
-        let src = file.url;
-        if (!src) {
-            src = await new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file.originFileObj);
-                reader.onload = () => resolve(reader.result);
-            });
-        }
-        const image = new Image();
-        image.src = src;
-        const imgWindow = window.open(src);
-        imgWindow?.document.write(image.outerHTML);
-    };
-
     return (
         <>
             <Row gutter={32}>
@@ -154,6 +167,7 @@ const CourseUniversity = () => {
                         url={'universities'}
                         RightElement={<></>}
                         rerender={rerender}
+                        scroll={{x: 1200}}
                     />
                 </Col>
                 <Col span={8}>
@@ -201,7 +215,7 @@ const CourseUniversity = () => {
                                         onPreview={onPreview}
                                         maxCount={1}
                                     >
-                                        {fileList.length < 1 && '+ Photo'}
+                                        {fileList.length < 1 && 'Logo'}
                                     </Upload>
 
                             </Form.Item>
