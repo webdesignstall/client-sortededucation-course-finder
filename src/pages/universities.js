@@ -21,9 +21,9 @@ const columns = [
   },
   {
     title: "Qualification",
-    dataIndex: "qualification",
-    key: "qualification",
-    render: (qualification) => <p>{qualification?.name}</p>,
+    dataIndex: "name",
+    key: "name",
+    render: (name) => <p>{name}</p>,
   },
   {
     title: "Details",
