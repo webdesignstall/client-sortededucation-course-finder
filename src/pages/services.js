@@ -4,6 +4,7 @@ import Head from "next/head";
 import {Col, Collapse, Row} from "antd";
 import ServicesImage from "../../public/images/services.jpeg";
 import handleRequest from "@/utilities/handleRequest";
+import {useEffect} from "react";
 
 const items = [
     {
@@ -53,12 +54,11 @@ const Services = ({services, faqs}) => {
         backgroundImage: `url('${ServicesImage.src}')`,
         backgroundSize: "cover",
     };
-
-    console.log(services)
-    // const {data: ServicesData} = services;
-    //
-    // const {data: FaqsData} = faqs;
-    // console.log(ServicesData);
+    const transformedFaqs = faqs?.map(faq => ({
+        key: faq._id,
+        label: <h4>{faq?.title}</h4>,
+        children: <p>{faq?.text}</p>
+    }));
 
     return (
         <>
@@ -77,8 +77,9 @@ const Services = ({services, faqs}) => {
                             </p>
                             <Collapse
                                 className={"faq"}
-                                items={faqs}
-                                defaultActiveKey={["1"]}
+                                key={transformedFaqs?.key}
+                                items={transformedFaqs}
+                                defaultActiveKey={[transformedFaqs[0]?.key]}
                             />
                         </Col>
                     </Row>
@@ -94,9 +95,8 @@ export default Services;
 export async function getStaticProps() {
     const servicesRes = await handleRequest("get", "services");
     const faqsRes = await handleRequest("get", "faqs");
-    const servicesData = servicesRes?.data?.length ? servicesRes?.data : [];
-    const faqsData = faqsRes?.data?.length ? faqsRes?.data : [];
-
+    const servicesData = servicesRes?.data !== null ? servicesRes?.data : [];
+    const faqsData = faqsRes?.data !== null ? faqsRes?.data : [];
 
     // revalidate time is 3 hours
     return {
@@ -112,18 +112,3 @@ Services.getLayout = function getLayout(page) {
     return <RootLayout>{page}</RootLayout>;
 };
 
-
-//
-// export async function getStaticProps() {
-//   const ServiceResponse = await handleRequest("get", "/services");
-//   const FaqsResponse = await handleRequest("get", "/faqs");
-//
-//   // Pass the data to the component as props
-//   return {
-//     props: {
-//       services: ServiceResponse.success ? ServiceResponse.data : [],
-//       faqs: FaqsResponse.success ? FaqsResponse.data : [],
-//     },
-//     revalidate: 3600,
-//   };
-// }
