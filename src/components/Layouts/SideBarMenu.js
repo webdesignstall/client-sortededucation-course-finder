@@ -94,6 +94,14 @@ const items = [
       )
     : "",
 
+  checkPermission("can_update_general")
+    ? getItem(
+        <Link href={"/dashboard/about-us"}> About US </Link>,
+        "about-us",
+        <ReadOutlined />,
+      )
+    : "",
+
   checkPermission("can_create_role") || checkPermission("can_view_role")
     ? getItem(
         <Link href={"/dashboard/role-management/role-list"}>
