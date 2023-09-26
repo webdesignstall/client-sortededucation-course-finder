@@ -15,7 +15,7 @@ const handleRequest = async (method, url, body, header) => {
       return data;
     } else {
       const { data } = await axiosInstance[method](url);
-      // data?.message && message?.success(data?.message);
+      data?.message && message?.success(data?.message);
       return data;
     }
   } catch (e) {

@@ -4,6 +4,7 @@ import Head from "next/head";
 import {Col, Collapse, Row} from "antd";
 import ServicesImage from "../../public/images/services.jpeg";
 import handleRequest from "@/utilities/handleRequest";
+import axiosInstance from "@/utilities/axiosInstance";
 const Services = ({services, faqs}) => {
     const ImageStyle = {
         backgroundImage: `url('${ServicesImage.src}')`,
@@ -48,8 +49,11 @@ export default Services;
 
 
 export async function getStaticProps() {
-    const servicesRes = await handleRequest("get", "services");
-    const faqsRes = await handleRequest("get", "faqs");
+
+    const {data: servicesRes} = await axiosInstance.get('/services');
+    const {data: faqsRes} = await axiosInstance.get('/faqs');
+    // const servicesRes = await handleRequest("get", "services");
+    // const faqsRes = await handleRequest("get", "faqs");
     const servicesData = servicesRes?.data !== null ? servicesRes?.data : [];
     const faqsData = faqsRes?.data !== null ? faqsRes?.data : [];
 
