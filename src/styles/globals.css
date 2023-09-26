@@ -174,16 +174,13 @@ p, label, span, a {
     font-size: 1.3rem;
     text-transform: capitalize;
 }
-.ant-menu-light.ant-menu-horizontal >.ant-menu-item-active::after{
-    /*border-bottom-width: 4px !important;*/
-    /*border-bottom-color: #000000 !important;*/
-    text-decoration: underline ;
 
-}
+
 .MobileNavIteam{
     margin: 50px;
     padding: 15px;
 }
+
 
 .MobileNavIteam:hover{
     background-color: var(--bgColor);
@@ -191,9 +188,46 @@ p, label, span, a {
     color: #fff;
 }
 
+.nav_container {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav_container_mobile {
+    padding: 5px;
+    display: grid;
 
 
-/* dip change */
+
+}
+
+.nav_item {
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 28px;
+    text-decoration: none;
+    margin: 0px 15px;
+    padding: 2px 0px;
+    border-bottom: 3px solid transparent;
+}
+
+.nav_item:hover{
+    color: #f8d4d4 !important;
+}
+.nav_item_active {
+    color: #ffffff !important;
+    border-color: #ffffff;
+}
+.ant-layout-header{
+    line-height: 40px!important;
+}
+.Header_Menu{
+    padding: 20px 0;
+}
+
+
+    /* dip change */
 
 .page-space {
     padding-top: 8rem;
@@ -453,7 +487,9 @@ p, label, span, a {
 
 
 
-
+.ant-btn:hover{
+    color: #d2d2d2 !important;
+}
 .custom-drawer-button {
     background-color: #6b1b1c; 
     color: #ffff; 
@@ -472,7 +508,30 @@ p, label, span, a {
     .dextop{
         display:none
     }
-  }
+    .nav_item {
+        text-transform: capitalize;
+        color: #090909;
+        font-size: 28px;
+        text-decoration: none;
+        margin: 10px 20px;
+        padding: 5px 10px;
+        border-radius: 8px
+    }
+    .nav_item:hover{
+        background-color: var(--bgColor);
+        border-radius: 8px;
+        margin: 10px 20px;
+        padding: 5px 10px;
+        color: #fff;
+    }
+    .nav_item_active {
+        color: #ffffff !important;
+        background-color: #6B1B1C;
+        margin: 10px 20px;
+        padding: 5px 10px;
+    }
+
+}
   
   /* Styles for tablet screens (768px to 1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
@@ -493,3 +552,34 @@ p, label, span, a {
 
 
 /* menu end */
+
+
+
+/*pagination color*/
+
+.ant-pagination {
+    background-color: #f2f2f2!important;
+    border-color: #090909!important;
+    color: #d2d2d2!important;
+}
+
+/* Override Ant Design Pagination button color */
+.ant-pagination-item  {
+    color: #090909 !important;
+}
+
+
+.ant-pagination-item-active  {
+    color: #090909;
+    background-color: #fff !important;
+    border-color: #6B1B1C !important;
+}
+ .ant-pagination-item-active a {
+    color: #090909 !important;
+}
+.ant-table {
+    background: transparent!important;
+}
+.ant-pagination{
+    background-color: transparent!important;
+}
