@@ -209,7 +209,7 @@ p, label, span, a {
     text-decoration: none;
     margin: 0px 15px;
     padding: 2px 0px;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
 }
 
 .nav_item:hover{
@@ -220,10 +220,11 @@ p, label, span, a {
     border-color: #ffffff;
 }
 .ant-layout-header{
-    line-height: 40px!important;
+    line-height: 30px!important;
 }
 .Header_Menu{
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 35px;
 }
 
 
