@@ -586,3 +586,12 @@ p, label, span, a {
 .dashboardStaticReport .ant-statistic-content-value-int {
     font-size: 30px;
 }
+.page-loader{
+    width: 100%!important;
+    height: 100vh!important;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
