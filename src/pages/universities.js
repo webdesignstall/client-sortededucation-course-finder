@@ -11,8 +11,9 @@ const columns = [
     key: "university",
     render: (university) => (
       <Image
-        width={300}
-        height={120}
+        layout="intrinsic"
+        width={200}
+        height={80}
         src={university?.logo?.secure_url}
         alt={university?.name}
       />
@@ -76,6 +77,7 @@ const Universities = ({ courses }) => {
               <Table
                 className="search-table"
                 columns={columns}
+                rowKey={courses?._id}
                 dataSource={courses}
               />
             </Col>
