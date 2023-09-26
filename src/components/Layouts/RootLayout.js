@@ -1,44 +1,63 @@
 import { Button, Col, Drawer, Layout, Menu, Row, theme } from "antd";
 import Link from "next/link";
 import Head from "next/head";
-import { useState } from "react";
-const { Header, Content, Footer } = Layout;
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { MenuOutlined } from "@ant-design/icons";
+const { Header, Content, Footer } = Layout;
 
 const RootLayout = ({ children }) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const [selectedKey, setSelectedKey] = useState("home");
+  const [visible, setVisible] = useState(false);
+  const router = useRouter();
 
   const paths = [
     {
       page: "Home",
       route: "/",
+      Key: "home",
     },
     {
       page: "Universites",
       route: "/universities",
+      Key: "universities",
     },
     {
       page: "About",
       route: "/about",
+      Key: "about",
     },
     {
       page: "Services",
       route: "/services",
+      Key: "services",
     },
     {
       page: "Contact",
       route: "/contact",
+      Key: "contact",
     },
   ];
 
   const [open, setOpen] = useState(false);
+
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
+  };
+
+  useEffect(() => {
+    // Close the drawer when the path changes
+    onClose();
+  }, [router.asPath]);
+
+  const handleMenuClick = (e) => {
+    setSelectedKey(e.key);
   };
 
   return (
@@ -60,30 +79,28 @@ const RootLayout = ({ children }) => {
             <div className="">
               <div className="dextop">
                 <Menu
-                  className={"menu "}
+                  onClick={handleMenuClick}
+                  selectedKeys={[selectedKey]}
+                  mode="horizontal"
                   style={{
                     display: "block",
                     backgroundColor: "transparent",
                   }}
-                  mode="horizontal"
-                  defaultSelectedKeys={["2"]}
                 >
-                  <items>
-                    {paths.map((path, index) => (
+                  {paths.map((path, index) => (
+                    <Menu.Item Key={path.Key}>
                       <Link
                         style={{
-                          textDecoration: "none",
                           color: "white",
                           margin: "0px 18px",
                           fontSize: "28px",
                         }}
-                        key={index + 1}
                         href={path.route}
                       >
                         {path.page}
                       </Link>
-                    ))}
-                  </items>
+                    </Menu.Item>
+                  ))}
                 </Menu>
               </div>
 
@@ -99,12 +116,17 @@ const RootLayout = ({ children }) => {
                         textDecoration: "none",
                         lineHeight: "26px",
                         color: "black",
-                        margin: "0 17px",
                       }}
                       key={index + 1}
                       href={path.route}
                     >
-                      <p style={{ fontSize: "35px" }}> {path.page}</p>
+                      <p
+                        className="MobileNavIteam"
+                        style={{ fontSize: "35px" }}
+                      >
+                        {" "}
+                        {path.page}
+                      </p>
                     </Link>
                   ))}
                 </Drawer>

@@ -3,6 +3,7 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
 import { Col, Collapse, Row } from "antd";
 import ServicesImage from "../../public/images/services.jpeg";
+import handleRequest from "@/utilities/handleRequest";
 
 const items = [
   {
@@ -47,11 +48,16 @@ const items = [
   },
 ];
 
-const Services = () => {
+const Services = ({ services, faqs }) => {
   const ImageStyle = {
     backgroundImage: `url('${ServicesImage.src}')`,
     backgroundSize: "cover",
   };
+
+  const { data: ServicesData } = services;
+
+  const { data: FaqsData } = faqs;
+  console.log(ServicesData);
 
   return (
     <>
@@ -87,3 +93,17 @@ export default Services;
 Services.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
+
+export async function getStaticProps() {
+  const ServiceResponse = await handleRequest("get", "/services");
+  const FaqsResponse = await handleRequest("get", "/faqs");
+
+  // Pass the data to the component as props
+  return {
+    props: {
+      services: ServiceResponse.success ? ServiceResponse.data : [],
+      faqs: FaqsResponse.success ? FaqsResponse.data : [],
+    },
+    revalidate: 3600,
+  };
+}
