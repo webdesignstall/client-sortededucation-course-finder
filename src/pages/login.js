@@ -7,6 +7,7 @@ import handleRequest from "@/utilities/handleRequest";
 import { setToken } from "@/utilities/sessionHelper";
 import { setAuth } from "@/redux/slice/auth-slice";
 import store from "@/redux/store";
+import LoginImage from "../../public/images/image-asset.jpeg";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -20,73 +21,81 @@ const LoginPage = () => {
       window.location.href = "/dashboard";
     }
   };
+
+  const ImageStyle = {
+    backgroundImage: `url('${LoginImage.src}')`,
+    backgroundSize: "cover",
+  };
+
   return (
-    <AuthFromWrapper formName="Login">
-      <Form
-        name="normal_login"
-        className="login-form"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-      >
-        <Form.Item
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Email!",
-            },
-          ]}
+    <div style={ImageStyle}>
+      <AuthFromWrapper formName="Login">
+        <Form
+          name="normal_login"
+          className="login-form"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
         >
-          <Input
-            size="large"
-            prefix={<MailOutlined className="site-form-item-icon" />}
-            placeholder="email"
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Password!",
-            },
-          ]}
-        >
-          <Input
-            size="large"
-            prefix={<KeyOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="Password"
-          />
-        </Form.Item>
-        <Form.Item>
-          {/*<Form.Item name="remember" valuePropName="checked" noStyle>
+          <Form.Item
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Email!",
+              },
+            ]}
+          >
+            <Input
+              size="large"
+              prefix={<MailOutlined className="site-form-item-icon" />}
+              placeholder="email"
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Password!",
+              },
+            ]}
+          >
+            <Input
+              size="large"
+              prefix={<KeyOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Password"
+            />
+          </Form.Item>
+          <Form.Item>
+            {/*<Form.Item name="remember" valuePropName="checked" noStyle>
                         <Checkbox>Remember me</Checkbox>
                     </Form.Item>*/}
 
-          <Link
-            className="login-form-forgot"
-            href="/forgot-password"
-            style={{ color: "red" }}
-          >
-            Forgot password
-          </Link>
-        </Form.Item>
+            <Link
+              className="login-form-forgot"
+              href="/forgot-password"
+              style={{ color: "red" }}
+            >
+              Forgot password
+            </Link>
+          </Form.Item>
 
-        <Form.Item>
-          <Button
-            loading={loading}
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Log in
-          </Button>
-        </Form.Item>
-      </Form>
-    </AuthFromWrapper>
+          <Form.Item>
+            <Button
+              loading={loading}
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              Log in
+            </Button>
+          </Form.Item>
+        </Form>
+      </AuthFromWrapper>
+    </div>
   );
 };
 export default LoginPage;
