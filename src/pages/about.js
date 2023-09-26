@@ -5,7 +5,7 @@ import Image from "next/image";
 import AboutImage from "../../public/images/62766.jpg";
 import handleRequest from "@/utilities/handleRequest";
 
-const AboutUs = () => {
+const AboutUs = ({ aboutUs }) => {
   const ImageStyle = {
     backgroundImage: `url('${AboutImage.src}')`,
     backgroundSize: "cover",
@@ -14,25 +14,14 @@ const AboutUs = () => {
   return (
     <>
       <Head>
-        <title>About Us</title>
+        <title>{aboutUs?.seoTitle}</title>
       </Head>
       <main style={ImageStyle}>
         <div className="container page-space about-us">
           <Row className="about-row">
             <Col xs={24} sm={24} md={11}>
-              <h2>WHO WE ARE</h2>
-              <p>
-                We are a dedicated team committed to simplifying the university
-                application process for you. Our mission is to provide
-                personalized guidance and unwavering support, helping you
-                navigate the intricate admissions journey and significantly
-                increasing your chances of being accepted into your dream
-                universities. With our comprehensive service, you can approach
-                the application process with confidence and peace of mind,
-                knowing that we are here to assist you every step of the way.
-                Let us be your trusted partners in achieving your academic
-                aspirations and securing a bright future ahead.
-              </p>
+              <h2>{aboutUs?.pageTitle}</h2>
+              <p>{aboutUs?.content}</p>
             </Col>
 
             <Col xs={0} sm={0} md={2}></Col>
@@ -46,8 +35,8 @@ const AboutUs = () => {
                 layout="intrinsic"
                 width={700}
                 height={600}
-                src={"/static/image-asset.jpeg"}
-                alt={"Who We Are"}
+                src={aboutUs?.image?.secure_url}
+                alt={aboutUs?.pageTitle}
               />
             </Col>
           </Row>
@@ -59,6 +48,11 @@ const AboutUs = () => {
 
 export default AboutUs;
 
+export async function getStaticProps() {
+  const res = await handleRequest("get", "about-us");
+  // revalidate time is 3 hours
+  return { props: { aboutUs: res.data[0] }, revalidate: 10800 };
+}
 AboutUs.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
