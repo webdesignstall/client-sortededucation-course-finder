@@ -72,10 +72,17 @@ const items = [
       ])
     : "",
 
-  checkPermission("can_view_contactUs")
+  checkPermission("can_update_general")
     ? getItem(
-        <Link href={"/dashboard/contact-us"}> Contact US </Link>,
+        <Link href={"/dashboard/contact-us"}> Contact Us </Link>,
         "contact-us",
+        <ReadOutlined />,
+      )
+    : "",
+    checkPermission("can_update_general")
+    ? getItem(
+        <Link href={"/dashboard/services"}> Services </Link>,
+        "services",
         <ReadOutlined />,
       )
     : "",
