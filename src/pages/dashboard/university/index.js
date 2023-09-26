@@ -108,8 +108,7 @@ const CourseUniversity = () => {
       render: (urls, items) => {
         return (
           <img
-            width={200}
-            height={120}
+            width={180}
             src={urls?.secure_url}
             alt={items.name}
           />
