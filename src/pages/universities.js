@@ -3,6 +3,7 @@ import Head from "next/head";
 import { Col, Row, Table } from "antd";
 import handleRequest from "@/utilities/handleRequest";
 import Image from "next/image";
+import UniversityImage from "../../public/images/image-asset.jpeg";
 
 const columns = [
   {
@@ -65,12 +66,17 @@ const columns = [
 ];
 
 const Universities = ({ courses }) => {
+  const ImageStyle = {
+    backgroundImage: `url('${UniversityImage.src}')`,
+    backgroundSize: "cover",
+  };
+
   return (
     <>
       <Head>
         <title>Search Result</title>
       </Head>
-      <main>
+      <main style={ImageStyle}>
         <div className="container page-space search-result">
           <Row>
             <Col xs={24} sm={24} md={24}>
