@@ -86,6 +86,13 @@ const items = [
         <ReadOutlined />,
       )
     : "",
+    checkPermission("can_update_general")
+    ? getItem(
+        <Link href={"/dashboard/faq"}> Faqs </Link>,
+        "faq",
+        <ReadOutlined />,
+      )
+    : "",
 
   checkPermission("can_create_role") || checkPermission("can_view_role")
     ? getItem(
