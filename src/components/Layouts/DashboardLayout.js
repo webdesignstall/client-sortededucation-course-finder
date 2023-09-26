@@ -1,6 +1,6 @@
 import React from "react";
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Breadcrumb, Layout, theme } from "antd";
+import { Avatar, Layout, theme } from "antd";
 import WithAuth from "@/middleware/WithAuth";
 import SideBarMenu from "@/components/Layouts/SideBarMenu";
 import { useSelector } from "react-redux";
@@ -46,14 +46,6 @@ const DashboardLayout = ({ children }) => {
             margin: "0 16px",
           }}
         >
-          <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-          >
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
           <div
             style={{
               padding: 24,

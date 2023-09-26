@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button, Card, Checkbox, Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import store from "@/redux/store";
@@ -10,6 +10,7 @@ import {
 import handleRequest from "@/utilities/handleRequest";
 import { useRouter } from "next/router";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
+import Head from "next/head";
 
 const Role = () => {
   const router = useRouter();
@@ -45,7 +46,10 @@ const Role = () => {
     await handleRequest("patch", `/roles-permission/${roleId}`, permissions);
   };
   return (
-    <main>
+    <>
+      <Head>
+        <title> {`${role?.toUpperCase()}`} - Permissions | Dashboard</title>
+      </Head>
       <Row justify={"center"}>
         <Col lg={24} xs={24}>
           <Card title={`${role?.toUpperCase()} - Permissions`}>
@@ -56,7 +60,7 @@ const Role = () => {
               onChange={onChange}
               value={checkedValues}
             >
-              <Row gutter={16}>
+              <Row gutter={[16, 16]}>
                 {permissions?.map((items) => (
                   <Col key={items?.id} span={8} className="p-3">
                     <Card title={items?.id}>
@@ -72,7 +76,6 @@ const Role = () => {
                 ))}
               </Row>
             </Checkbox.Group>
-            <hr />
 
             <Button
               onClick={assignPermission}
@@ -85,7 +88,7 @@ const Role = () => {
           </Card>
         </Col>
       </Row>
-    </main>
+    </>
   );
 };
 

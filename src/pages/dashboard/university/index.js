@@ -6,6 +6,7 @@ import moment from "moment";
 import handleRequest from "@/utilities/handleRequest";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import Image from "next/image";
+import Head from "next/head";
 
 const CourseUniversity = () => {
   const [rerender, setRerender] = useState(0);
@@ -106,13 +107,7 @@ const CourseUniversity = () => {
       dataIndex: "logo",
       key: "logo",
       render: (urls, items) => {
-        return (
-          <img
-            width={180}
-            src={urls?.secure_url}
-            alt={items.name}
-          />
-        );
+        return <img width={180} src={urls?.secure_url} alt={items.name} />;
       },
     },
     {
@@ -170,6 +165,9 @@ const CourseUniversity = () => {
 
   return (
     <>
+      <Head>
+        <title> University List | Dashboard</title>
+      </Head>
       <Row gutter={32}>
         <Col span={16}>
           <SharedTable
