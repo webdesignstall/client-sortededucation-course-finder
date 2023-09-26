@@ -90,9 +90,6 @@ const Services = ({services, faqs}) => {
 
 export default Services;
 
-Services.getLayout = function getLayout(page) {
-    return <RootLayout>{page}</RootLayout>;
-};
 
 export async function getStaticProps() {
     const servicesRes = await handleRequest("get", "services");
@@ -100,7 +97,7 @@ export async function getStaticProps() {
     const servicesData = servicesRes?.data?.length ? servicesRes?.data : [];
     const faqsData = faqsRes?.data?.length ? faqsRes?.data : [];
 
-    console.log(servicesRes)
+
     // revalidate time is 3 hours
     return {
         props: {
@@ -110,6 +107,11 @@ export async function getStaticProps() {
         revalidate: 10800,
     };
 }
+
+Services.getLayout = function getLayout(page) {
+    return <RootLayout>{page}</RootLayout>;
+};
+
 
 //
 // export async function getStaticProps() {
