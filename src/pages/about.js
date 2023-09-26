@@ -50,9 +50,10 @@ export default AboutUs;
 
 export async function getStaticProps() {
   const res = await handleRequest("get", "about-us");
+  const data = res?.data.length ? res?.data[0] : [];
   // revalidate time is 3 hours
   return {
-    props: { aboutUs: res?.data[0]?.length ? res?.data[0] : [] },
+    props: { aboutUs: data },
     revalidate: 10800,
   };
 }
