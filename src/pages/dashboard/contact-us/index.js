@@ -4,6 +4,7 @@ import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import SharedTable from "@/components/shared/SharedTable";
 import moment from "moment";
 import handleRequest from "@/utilities/handleRequest";
+import Head from "next/head";
 
 const { Paragraph } = Typography;
 const { Option } = Select;
@@ -137,6 +138,9 @@ const CourseSubject = () => {
 
   return (
     <>
+      <Head>
+        <title>Contact Us | Dashboard</title>
+      </Head>
       <SharedTable
         tableName="Contact US"
         tableColumn={columns}

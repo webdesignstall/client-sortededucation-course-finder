@@ -4,7 +4,8 @@ import CreateRoleForm from "@/components/roleManagement/CreateRoleForm";
 import Link from "next/link";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import handleRequest from "@/utilities/handleRequest";
-import { useState } from "react";
+import React, { useState } from "react";
+import Head from "next/head";
 
 const RoleList = () => {
   const [loading, setLoading] = useState(false);
@@ -76,6 +77,9 @@ const RoleList = () => {
 
   return (
     <>
+      <Head>
+        <title>Role List | Dashboard</title>
+      </Head>
       <SharedTable
         tableName="Roles"
         tableColumn={columns}

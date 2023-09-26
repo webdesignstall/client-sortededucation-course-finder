@@ -5,6 +5,7 @@ import moment from "moment/moment";
 import { Button, Space } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import Head from "next/head";
 
 const CourseList = () => {
   /* const [isDeleting, setIsDeleting] = useState(false)
@@ -101,6 +102,9 @@ const CourseList = () => {
 
   return (
     <>
+      <Head>
+        <title>Employee List | Dashboard</title>
+      </Head>
       <SharedTable
         tableName="Employees"
         tableColumn={columns}

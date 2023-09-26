@@ -2,6 +2,7 @@ import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import EmployeeForm from "@/components/employee/EmployeeForm";
+import Head from "next/head";
 
 const CourseUpdate = () => {
   const params = useSearchParams();
@@ -9,6 +10,9 @@ const CourseUpdate = () => {
 
   return (
     <>
+      <Head>
+        <title>Employee Update - {employeeId} | Dashboard</title>
+      </Head>
       <EmployeeForm employeeId={employeeId} />
     </>
   );

@@ -5,6 +5,7 @@ import SharedTable from "@/components/shared/SharedTable";
 import moment from "moment";
 import handleRequest from "@/utilities/handleRequest";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import Head from "next/head";
 
 const CourseQualification = () => {
   const [rerender, setRerender] = useState(0);
@@ -107,6 +108,9 @@ const CourseQualification = () => {
 
   return (
     <>
+      <Head>
+        <title>Qualification | Dashboard</title>
+      </Head>
       <Row gutter={32}>
         <Col span={16}>
           <SharedTable

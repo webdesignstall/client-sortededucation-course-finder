@@ -5,6 +5,7 @@ import SharedTable from "@/components/shared/SharedTable";
 import handleRequest from "@/utilities/handleRequest";
 import { EditOutlined } from "@ant-design/icons";
 import Image from "next/image";
+import Head from "next/head";
 
 const AboutUs = () => {
   const [rerender, setRerender] = useState(0);
@@ -128,6 +129,9 @@ const AboutUs = () => {
 
   return (
     <>
+      <Head>
+        <title>About Us | Dashboard</title>
+      </Head>
       <Row gutter={32}>
         <Col span={16}>
           <SharedTable
