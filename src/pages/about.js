@@ -51,7 +51,10 @@ export default AboutUs;
 export async function getStaticProps() {
   const res = await handleRequest("get", "about-us");
   // revalidate time is 3 hours
-  return { props: { aboutUs: res.data[0] }, revalidate: 10800 };
+  return {
+    props: { aboutUs: res?.data[0]?.length ? res?.data[0] : [] },
+    revalidate: 10800,
+  };
 }
 AboutUs.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
