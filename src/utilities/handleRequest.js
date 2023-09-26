@@ -15,15 +15,16 @@ const handleRequest = async (method, url, body, header) => {
       return data;
     } else {
       const { data } = await axiosInstance[method](url);
-      data?.message && message?.success(data?.message);
+      // data?.message && message?.success(data?.message);
       return data;
     }
   } catch (e) {
+
     const errors = e?.response?.data?.errorMessages;
     errors?.map((error) => message?.error(error?.message));
     return {
       success: false,
-      data: null,
+      data: null
     };
   }
 };
