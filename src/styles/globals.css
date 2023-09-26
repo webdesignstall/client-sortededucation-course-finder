@@ -555,7 +555,6 @@ p, label, span, a {
 /* menu end */
 
 
-
 /*pagination color*/
 
 .ant-pagination {
@@ -581,6 +580,9 @@ p, label, span, a {
 .ant-table {
     background: transparent!important;
 }
-.ant-pagination{
-    background-color: transparent!important;
+.ant-pagination {
+    background-color: transparent !important;
+}
+.dashboardStaticReport .ant-statistic-content-value-int {
+    font-size: 30px;
 }
