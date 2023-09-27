@@ -34,6 +34,12 @@ export default function Home({ countries, subjects, qualifications }) {
     backgroundSize: "cover",
   };
 
+  const filterOption = (inputValue, option) => {
+    return option.props.children
+      .toLowerCase()
+      .includes(inputValue.toLowerCase());
+  };
+
   return (
     <>
       <Head>
@@ -66,6 +72,7 @@ export default function Home({ countries, subjects, qualifications }) {
                       size="large"
                       placeholder="Select a Subject"
                       showSearch
+                      filterOption={filterOption}
                     >
                       {subjects?.length
                         ? subjects?.map((item) => (
@@ -97,6 +104,7 @@ export default function Home({ countries, subjects, qualifications }) {
                       size="large"
                       placeholder="Select a Qualification"
                       showSearch
+                      filterOption={filterOption}
                     >
                       {qualifications?.length
                         ? qualifications?.map((item) => (
