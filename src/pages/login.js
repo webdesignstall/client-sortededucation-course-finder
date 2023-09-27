@@ -8,9 +8,17 @@ import { setToken } from "@/utilities/sessionHelper";
 import { setAuth } from "@/redux/slice/auth-slice";
 import store from "@/redux/store";
 import LoginImage from "../../public/images/image-asset.jpeg";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
+  const { currentUser } = useSelector((state) => state.auth);
+  const router = useRouter();
+  if (currentUser) {
+    router.push("/dashboard");
+  }
+
   const onFinish = async (values) => {
     setLoading(true);
     const result = await handleRequest("post", "/login", values);
