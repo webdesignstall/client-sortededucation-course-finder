@@ -10,7 +10,7 @@ const { Option } = Select;
 
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
-  required: "${label} is required!",
+  required: "${label}",
   types: {
     email: "${label} is not a valid email!",
     number: "${label} is not a valid number!",
@@ -53,7 +53,7 @@ export default function Home({ countries, subjects, qualifications }) {
                 >
                   <Form.Item
                     name={"subject"}
-                    label="Select a Subject:"
+                    label="Select a Subject"
                     rules={[
                       {
                         required: true,
@@ -86,7 +86,7 @@ export default function Home({ countries, subjects, qualifications }) {
                   </Form.Item>
                   <Form.Item
                     name={"qaulification"}
-                    label="Select a Qualification:"
+                    label="Select a Qualification"
                     rules={[
                       {
                         required: true,
@@ -117,7 +117,7 @@ export default function Home({ countries, subjects, qualifications }) {
                   </Form.Item>
                   <Form.Item
                     name={"location"}
-                    label="Select a Location:"
+                    label="Select a Location"
                     rules={[
                       {
                         required: true,

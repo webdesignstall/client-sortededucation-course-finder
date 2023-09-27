@@ -8,7 +8,7 @@ import ContacImage from "../../public/images/image-asset.jpeg";
 
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
-  required: "${label} is required!",
+  required: "${label}",
   types: {
     email: "${label} is not a valid email!",
     number: "${label} is not a valid number!",
@@ -61,7 +61,7 @@ const ContactUs = () => {
                   services in detail, don't hesitate to reach out.
                 </p>
                 <p>
-                  <span className="bold">Email us at:</span>{" "}
+                  <span className="bold">Email us at</span>{" "}
                   abdulla@sortededucation.com
                 </p>
                 <p>
