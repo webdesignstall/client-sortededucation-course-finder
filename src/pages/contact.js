@@ -76,36 +76,6 @@ const ContactUs = ({ contactUsPage }) => {
                   ))}
                 </div>
               </div>
-              {/* <div className="contact-conent">
-                {contactUsPage?.content}
-                <p className="bold">
-                  Contact Us for a Journey Towards Your Educational Success!
-                </p>
-                <p>
-                  We're thrilled to be part of your academic journey and are
-                  here to provide all the support you need. Whether you have
-                  questions, need personalized guidance, or want to discuss our
-                  services in detail, don't hesitate to reach out.
-                </p>
-                <p>
-                  <span className="bold">Email us at</span>{" "}
-                  abdulla@sortededucation.com
-                </p>
-                <p>
-                  <span className="bold">Call or WhatsApp:</span> +973 36992110
-                </p>
-                <p>
-                  Our dedicated team is ready to listen, understand your
-                  aspirations, and craft a tailored plan to achieve your
-                  educational goals. Your dreams matter to us, and we're
-                  committed to making your path to university success as smooth
-                  as possible.
-                </p>
-                <p>
-                  Let's work together towards a brighter future. Contact us
-                  today, and let the journey begin!
-                </p>
-              </div>*/}
             </Col>
 
             <Col xs={0} sm={0} md={2}></Col>
