@@ -1,5 +1,16 @@
-import React, { useState } from "react";
-import { Button, Select, Space, Tag, Typography } from "antd";
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  Input,
+  Row,
+  Select,
+  Space,
+  Tag,
+  Typography,
+} from "antd";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
 import SharedTable from "@/components/shared/SharedTable";
 import moment from "moment";
@@ -13,6 +24,10 @@ const CourseSubject = () => {
   const [rerender, setRerender] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [contactUsPageId, setContactUsPageId] = useState(false);
+  const [contactUsPage, setContactUsPage] = useState(null);
+  const [form] = Form.useForm();
 
   const deleteHandle = async (id) => {
     const isConfirm = window.confirm("Are you sure delete!");
@@ -30,6 +45,29 @@ const CourseSubject = () => {
     setRerender(rerender + 1);
     setIsUpdating(false);
   };
+
+  const onFinish = async (values) => {
+    setLoading(true);
+    const result = await handleRequest("post", `contact-us-page`, values);
+
+    if (result.success) {
+      form.resetFields();
+      const result = await handleRequest("get", `contact-us-page`);
+      if (result.success) {
+        setContactUsPage(result?.data);
+      }
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    (async () => {
+      const result = await handleRequest("get", `contact-us-page`);
+      if (result.success) {
+        setContactUsPage(result?.data);
+      }
+    })();
+  }, []);
 
   const columns = [
     {
@@ -141,15 +179,118 @@ const CourseSubject = () => {
       <Head>
         <title>Contact Us | Dashboard</title>
       </Head>
-      <SharedTable
-        tableName="Contact US"
-        tableColumn={columns}
-        url={"contact-us"}
-        RightElement={<></>}
-        rerender={rerender}
-        expandable={expandable}
-        rowKey={(obj) => obj._id}
-      />
+      <Row gutter={18}>
+        <Col span={16}>
+          <SharedTable
+            tableName="Contact US"
+            tableColumn={columns}
+            url={"contact-us"}
+            RightElement={<></>}
+            rerender={rerender}
+            expandable={expandable}
+            rowKey={(obj) => obj._id}
+          />
+        </Col>
+        <Col span={8}>
+          {contactUsPage ? (
+            <>
+              <Card
+                extra={
+                  <Button
+                    onClick={() => {
+                      setContactUsPage(null);
+                      form.setFieldsValue(contactUsPage);
+                      setContactUsPageId(true);
+                    }}
+                    type="primary"
+                  >
+                    Edit
+                  </Button>
+                }
+              >
+                <h2>{contactUsPage?.pageTitle}</h2>
+                <div className="contact-conent">
+                  <p
+                    style={{
+                      marginTop: 20,
+                    }}
+                  >
+                    {contactUsPage?.content?.split("\n").map((line, index) => (
+                      <React.Fragment key={index}>
+                        <Paragraph
+                          className="text-justify"
+                          style={{
+                            color: "var(--secondary)",
+                            fontSize: "1rem",
+                            width: "100%",
+                            textAlign: "justify",
+                            textJustify: "inter-word",
+                          }}
+                        >
+                          {" "}
+                          {line}
+                        </Paragraph>
+                      </React.Fragment>
+                    ))}
+                  </p>
+                </div>
+              </Card>
+            </>
+          ) : (
+            <Card title={"Contact Us Page"}>
+              <Form form={form} layout="vertical" onFinish={onFinish}>
+                <Form.Item
+                  label="Title"
+                  name="pageTitle"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Title is required!",
+                    },
+                  ]}
+                >
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  label="SEO Title"
+                  name="seoTitle"
+                  rules={[
+                    {
+                      required: true,
+                      message: "SEO Title is required!",
+                    },
+                  ]}
+                >
+                  <Input />
+                </Form.Item>
+
+                <Form.Item
+                  label="Content"
+                  name="content"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Content is required!",
+                    },
+                  ]}
+                >
+                  <Input.TextArea size="large" />
+                </Form.Item>
+                <Form.Item hidden name="id">
+                  <Input />
+                </Form.Item>
+                <Form.Item>
+                  <Space size={6}>
+                    <Button loading={loading} type="primary" htmlType="submit">
+                      {contactUsPageId ? "Save Changes" : "Save"}
+                    </Button>
+                  </Space>
+                </Form.Item>
+              </Form>
+            </Card>
+          )}
+        </Col>
+      </Row>
     </>
   );
 };

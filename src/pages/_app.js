@@ -36,7 +36,9 @@ export default function MyApp({ Component, pageProps }) {
     };
   }, []);
 
-  if (loading) {
+  const isDashboardRoute = router.pathname.startsWith("/dashboard");
+
+  if (loading && !isDashboardRoute) {
     return (
       <div className="page-loader">
         <Spin size="large" />
