@@ -2,9 +2,10 @@
 
 import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
-import { Button, Form, Input, InputNumber, Col, Row } from "antd";
+import { Button, Col, Form, Input, Row } from "antd";
 import handleRequest from "@/utilities/handleRequest";
 import ContacImage from "../../public/images/image-asset.jpeg";
+import React from "react";
 
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
@@ -19,7 +20,7 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-const ContactUs = () => {
+const ContactUs = ({ contactUsPage }) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
@@ -43,14 +44,40 @@ const ContactUs = () => {
   return (
     <>
       <Head>
-        <title>Contact Us</title>
+        <title>{contactUsPage?.seoTitle}</title>
       </Head>
       <main style={ImageStyle}>
         <div className="container page-space contact">
           <Row>
             <Col xs={24} sm={24} md={11}>
-              <h2>CONTACT US</h2>
+              <h2>{contactUsPage?.pageTitle}</h2>
               <div className="contact-conent">
+                <div
+                  style={{
+                    marginTop: 20,
+                  }}
+                >
+                  {contactUsPage?.content?.split("\n").map((line, index) => (
+                    <>
+                      <p
+                        key={index}
+                        className="text-justify"
+                        style={{
+                          fontSize: "1.3rem",
+                          width: "100%",
+                          textAlign: "justify",
+                          textJustify: "inter-word",
+                        }}
+                      >
+                        {" "}
+                        {line}
+                      </p>
+                    </>
+                  ))}
+                </div>
+              </div>
+              {/* <div className="contact-conent">
+                {contactUsPage?.content}
                 <p className="bold">
                   Contact Us for a Journey Towards Your Educational Success!
                 </p>
@@ -78,7 +105,7 @@ const ContactUs = () => {
                   Let's work together towards a brighter future. Contact us
                   today, and let the journey begin!
                 </p>
-              </div>
+              </div>*/}
             </Col>
 
             <Col xs={0} sm={0} md={2}></Col>
@@ -171,6 +198,16 @@ const ContactUs = () => {
 };
 
 export default ContactUs;
+
+export async function getStaticProps() {
+  const res = await handleRequest("get", "contact-us-page");
+
+  // revalidate time is 3 hours
+  return {
+    props: { contactUsPage: res?.data },
+    revalidate: 10800,
+  };
+}
 
 ContactUs.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
