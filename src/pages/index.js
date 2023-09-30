@@ -5,6 +5,7 @@ import React from "react";
 import handleRequest from "@/utilities/handleRequest";
 import { useRouter } from "next/router";
 import HomeImage from "../../public/images/image-asset.jpeg";
+import axiosInstance from "@/utilities/axiosInstance";
 
 const { Option } = Select;
 
@@ -21,7 +22,7 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-export default function Home({ countries, subjects, qualifications }) {
+export default function Home({ countries, subjects, qualifications, general }) {
   const router = useRouter();
   const onFinish = (values) => {
     router.push(
@@ -39,17 +40,19 @@ export default function Home({ countries, subjects, qualifications }) {
       .toLowerCase()
       .includes(inputValue.toLowerCase());
   };
-
   return (
     <>
       <Head>
-        <title>Enroll and Excel</title>
+        <title>{general?.homePageSeoTileText || "Enroll and Excell"}</title>
+        <meta name="description" content={general?.homePageMetaDescription} />
       </Head>
       <main style={ImageStyle}>
         <div className="container page-space home">
           <Row>
             <Col md={24}>
-              <h2 className="search-label">UNIVERSITY SEARCH</h2>
+              <h2 className="search-label">
+                {general?.homePageTile || "UNIVERSITY SEARCH"}
+              </h2>
               <div className="search-field">
                 <Form
                   name="contact"
@@ -66,8 +69,6 @@ export default function Home({ countries, subjects, qualifications }) {
                       },
                     ]}
                   >
-                    {/*<Select size={'large'} placeholder={'Select a Subject'} showSearch={true} options={subject} />*/}
-
                     <Select
                       size="large"
                       placeholder="Select a Subject"
@@ -186,6 +187,8 @@ export async function getServerSideProps() {
   );
   const responseUniversities = await handleRequest("get", `/countries`);
 
+  const { data } = await axiosInstance.get("/generals");
+
   // Pass the data to the component as props
   return {
     props: {
@@ -194,6 +197,7 @@ export async function getServerSideProps() {
       qualifications: responseQualifications.success
         ? responseQualifications.data
         : [],
+      general: data?.data || {},
     },
   };
 }
