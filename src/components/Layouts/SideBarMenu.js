@@ -79,14 +79,14 @@ const items = [
         <ReadOutlined />,
       )
     : "",
-    checkPermission("can_update_general")
+  checkPermission("can_update_general")
     ? getItem(
         <Link href={"/dashboard/services"}> Services </Link>,
         "services",
         <ReadOutlined />,
       )
     : "",
-    checkPermission("can_update_general")
+  checkPermission("can_update_general")
     ? getItem(
         <Link href={"/dashboard/faq"}> Faqs </Link>,
         "faq",
@@ -108,6 +108,14 @@ const items = [
           Role Management
         </Link>,
         "5",
+        <BorderOutlined />,
+      )
+    : "",
+
+  checkPermission("can_update_general")
+    ? getItem(
+        <Link href={"/dashboard/general"}>General</Link>,
+        "general",
         <BorderOutlined />,
       )
     : "",
