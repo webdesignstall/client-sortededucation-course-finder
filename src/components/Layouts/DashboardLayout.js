@@ -1,6 +1,5 @@
 import React from "react";
-import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Layout, theme } from "antd";
+import { Layout, theme } from "antd";
 import WithAuth from "@/middleware/WithAuth";
 import SideBarMenu from "@/components/Layouts/SideBarMenu";
 import { useSelector } from "react-redux";
@@ -37,7 +36,7 @@ const DashboardLayout = ({ children }) => {
             <div></div>
             <div>
               {currentUser?.email}
-              <Avatar size="large" icon={<UserOutlined />} />
+              {/*<Avatar size="large" icon={<UserOutlined />} />*/}
             </div>
           </div>
         </Header>

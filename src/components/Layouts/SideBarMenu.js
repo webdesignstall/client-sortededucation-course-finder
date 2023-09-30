@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {
+  BankOutlined,
   BorderOutlined,
+  CustomerServiceOutlined,
   DashboardOutlined,
+  ExclamationOutlined,
   HomeOutlined,
   LogoutOutlined,
+  MessageOutlined,
+  QuestionOutlined,
   ReadOutlined,
+  SettingOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import { logOut } from "@/utilities/sessionHelper";
 import { Layout, Menu } from "antd";
@@ -54,7 +61,7 @@ const items = [
     ? getItem(
         <Link href={"/dashboard/university"}> University </Link>,
         "university",
-        <ReadOutlined />,
+        <BankOutlined />,
       )
     : "",
 
@@ -66,7 +73,7 @@ const items = [
     : "",
 
   checkPermission("can_user_create") || checkPermission("can_view_user")
-    ? getItem("Employee", "sub3", <ReadOutlined />, [
+    ? getItem("Employee", "sub3", <TeamOutlined />, [
         getItem(<Link href={"/dashboard/employee/create"}>Create</Link>, "7"),
         getItem(<Link href={"/dashboard/employee/list"}>List</Link>, "8"),
       ])
@@ -76,21 +83,21 @@ const items = [
     ? getItem(
         <Link href={"/dashboard/contact-us"}> Contact Us </Link>,
         "contact-us",
-        <ReadOutlined />,
+        <MessageOutlined />,
       )
     : "",
   checkPermission("can_update_general")
     ? getItem(
         <Link href={"/dashboard/services"}> Services </Link>,
         "services",
-        <ReadOutlined />,
+        <CustomerServiceOutlined />,
       )
     : "",
   checkPermission("can_update_general")
     ? getItem(
         <Link href={"/dashboard/faq"}> Faqs </Link>,
         "faq",
-        <ReadOutlined />,
+        <QuestionOutlined />,
       )
     : "",
 
@@ -98,7 +105,7 @@ const items = [
     ? getItem(
         <Link href={"/dashboard/about-us"}> About US </Link>,
         "about-us",
-        <ReadOutlined />,
+        <ExclamationOutlined />,
       )
     : "",
 
@@ -108,7 +115,7 @@ const items = [
           Role Management
         </Link>,
         "5",
-        <BorderOutlined />,
+        <SettingOutlined />,
       )
     : "",
 
