@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import handleRequest from "@/utilities/handleRequest";
 import Image from "next/image";
 import DashboardLayout from "@/components/Layouts/DashboardLayout";
+import Head from "next/head";
 
 const GeneralPage = () => {
   const [loading, setLoading] = useState(false);
@@ -71,6 +72,9 @@ const GeneralPage = () => {
 
   return (
     <>
+      <Head>
+        <title>General | Dashboard</title>
+      </Head>
       <Row>
         <Col span={12} offset={6}>
           <Card>
