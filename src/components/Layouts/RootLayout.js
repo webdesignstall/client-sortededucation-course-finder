@@ -70,8 +70,8 @@ const RootLayout = ({ children }) => {
         <Header className={"header"}>
           <div className={"container MainHead"}>
             <Link
-              className={gotham.className}
-              style={{ fontSize: "53pt", color: "white" }}
+              className={gotham.className + " logoText"}
+              style={{ color: "white" }}
               href="/"
             >
               {general?.logoText || "Sorted"}
@@ -119,8 +119,8 @@ const RootLayout = ({ children }) => {
             >
               <Image
                 src={InstagramLogo}
-                width={50}
-                height={50}
+                width={30}
+                height={30}
                 alt="instagram"
               />
             </Link>
