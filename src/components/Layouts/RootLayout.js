@@ -112,7 +112,7 @@ const RootLayout = ({ children }) => {
               </div>
             </div>
           </div>
-          <div className="social-icon instagram-icon">
+          <div className="social-icon">
             <Link
               href="https://www.instagram.com/sortededucation/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
               target="_blank"
