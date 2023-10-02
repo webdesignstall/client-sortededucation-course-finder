@@ -5,8 +5,14 @@ import React from "react";
 import handleRequest from "@/utilities/handleRequest";
 import { useRouter } from "next/router";
 import HomeImage from "../../public/images/image-asset.jpeg";
+import HomeBanner from "../../public/images/home-banner.webp";
 import axiosInstance from "@/utilities/axiosInstance";
+import localFont from "next/font/local";
+import Image from "next/image";
 
+const garamondItelic = localFont({
+  src: "../../public/fonts/Apple-Garamond-Italic.ttf.woff",
+});
 const { Option } = Select;
 
 /* eslint-disable no-template-curly-in-string */
@@ -47,11 +53,60 @@ export default function Home({ countries, subjects, qualifications, general }) {
         <meta name="description" content={general?.homePageMetaDescription} />
       </Head>
       <main style={ImageStyle}>
+        <Image
+          src={HomeBanner}
+          alt="Home banner"
+          sizes="100vw"
+          // Make the image display full width
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
         <div className="container page-space home">
+          {/*search-label*/}
           <Row>
             <Col md={24}>
-              <h2 className="search-label">
-                {general?.homePageTile || "UNIVERSITY SEARCH"}
+              <h2
+                className={garamondItelic.className}
+                style={{
+                  fontSize: "61pt",
+                  fontWeight: "normal",
+                  marginBottom: "2rem",
+                  color: "var(--bgColor)",
+                }}
+              >
+                Start Now
+              </h2>
+              <p
+                style={{
+                  fontFamily: "Helvetica W01 Bold",
+                  fontSize: "25pt",
+                  color: "var(--bgColor)",
+                }}
+              >
+                Your gateway to ease the university application process
+              </p>
+              <br />
+              <p
+                style={{
+                  fontFamily: "Helvetica W01 Bold",
+                  fontSize: "25pt",
+                  color: "var(--bgColor)",
+                }}
+              >
+                Select your <strong>subject of interest</strong> and get started
+                immediately
+              </p>
+              <h2
+                style={{
+                  fontFamily: "Helvetica W01 Bold",
+                  fontSize: "33pt",
+                  marginTop: "2rem",
+                  color: "var(--bgColor)",
+                }}
+              >
+                {general?.homePageTile || "University Search"}
               </h2>
               <div className="search-field">
                 <Form

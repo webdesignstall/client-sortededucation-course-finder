@@ -16,12 +16,23 @@ const AboutUs = ({ aboutUs }) => {
       <Head>
         <title>{aboutUs?.seoTitle}</title>
       </Head>
-      <main style={ImageStyle}>
-        <div className="container page-space about-us">
+      <main>
+        <div
+          className="container page-space about-us"
+          style={{ marginTop: "5rem" }}
+        >
           <Row className="about-row">
             <Col xs={24} sm={24} md={11}>
               <h2>{aboutUs?.pageTitle}</h2>
-              <p>{aboutUs?.content}</p>
+              <p
+                style={{
+                  fontFamily: "Helvetica W01 Bold",
+                  fontSize: "25pt",
+                  lineHeight: "32pt",
+                }}
+              >
+                {aboutUs?.content}
+              </p>
             </Col>
 
             <Col xs={0} sm={0} md={2}></Col>
@@ -34,7 +45,7 @@ const AboutUs = ({ aboutUs }) => {
               <Image
                 layout="intrinsic"
                 width={700}
-                height={600}
+                height={800}
                 src={aboutUs?.image?.secure_url}
                 alt={aboutUs?.pageTitle}
               />

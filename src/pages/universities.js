@@ -77,7 +77,10 @@ const Universities = ({ courses }) => {
         <title>Search Result</title>
       </Head>
       <main style={ImageStyle}>
-        <div className="container page-space search-result">
+        <div
+          className="container page-space search-result"
+          style={{ marginTop: "5rem" }}
+        >
           <Row>
             <Col xs={24} sm={24} md={24}>
               <Table

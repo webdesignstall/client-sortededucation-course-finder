@@ -5,7 +5,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { MenuOutlined } from "@ant-design/icons";
 import handleRequest from "@/utilities/handleRequest";
+import localFont from "next/font/local";
+import Image from "next/image";
+import InstagramLogo from "../../../public/images/instagram-logo.png";
 
+const gotham = localFont({
+  src: "../../../public/fonts/gotham-black-webfont.woff2",
+});
 const { Header, Content, Footer } = Layout;
 
 const RootLayout = ({ children }) => {
@@ -54,15 +60,22 @@ const RootLayout = ({ children }) => {
           rel="icon"
           href={general?.favicon?.secure_url || "./favicon.png"}
         />
+        <link
+          href="https://www.dafontfree.net/embed/Z290aGFtLWJsYWNrJmRhdGEvNDYvZy82Mzg2MS9Hb3RoYW0tQmxhY2sub3Rm"
+          rel="stylesheet"
+          type="text/css"
+        />
       </Head>
       <Layout className="layout">
         <Header className={"header"}>
-          <div className={"container   MainHead"}>
-            <div className="">
-              <Link href="/">
-                <h1 className="logo">{general?.logoText || "Sorted"}</h1>
-              </Link>
-            </div>
+          <div className={"container MainHead"}>
+            <Link
+              className={gotham.className}
+              style={{ fontSize: "53pt", color: "white" }}
+              href="/"
+            >
+              {general?.logoText || "Sorted"}
+            </Link>
             <div className="Header_Menu ">
               <div className="dextop">
                 <nav className="nav_container">
@@ -78,10 +91,9 @@ const RootLayout = ({ children }) => {
                   })}
                 </nav>
               </div>
-
               <div className={"mobileMenu"}>
                 <Button className="custom-drawer-button" onClick={showDrawer}>
-                  <MenuOutlined style={{ fontSize: "30px" }} />
+                  <MenuOutlined style={{ fontSize: "50px" }} />
                 </Button>
                 <Drawer placement="right" onClose={onClose} open={open}>
                   <nav className="nav_container_mobile">
@@ -99,6 +111,19 @@ const RootLayout = ({ children }) => {
                 </Drawer>
               </div>
             </div>
+          </div>
+          <div className="social-icon instagram-icon">
+            <Link
+              href="https://www.instagram.com/sortededucation/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
+              target="_blank"
+            >
+              <Image
+                src={InstagramLogo}
+                width={50}
+                height={50}
+                alt="instagram"
+              />
+            </Link>
           </div>
         </Header>
         <Content>
