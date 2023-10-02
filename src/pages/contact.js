@@ -171,16 +171,18 @@ const ContactUs = ({ contactUsPage }) => {
               md={11}
               style={{ display: "flex", alignItems: "center" }}
             >
-              <Image
-                src={RightImage}
-                alt=""
-                sizes="100vw"
-                // Make the image display full width
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-              />
+              <div className="contactUs-right">
+                <Image
+                  src={RightImage}
+                  alt=""
+                  sizes="100vw"
+                  // Make the image display full width
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                />
+              </div>
             </Col>
           </Row>
         </div>
