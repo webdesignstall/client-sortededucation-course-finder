@@ -1,23 +1,44 @@
+/*
 @import url('https://fonts.cdnfonts.com/css/times-new-roman');
 
 @import url('https://fonts.googleapis.com/css2?family=Maitree:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,700;1,400;1,600;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Maitree:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,700;1,400;1,600;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maitree:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,700;1,400;1,600;1,800;1,900&display=swap');
+*/
+@import url(https://db.onlinewebfonts.com/c/f7d1b2995a6dff7abcda304d226aa67d?family=Helvetica+W01+Bold);
+@font-face {
+    font-family: "Garamond";
+    src: url("/public/fonts/Garamond.ttf");
+}
+@font-face {
+    font-family: "Gotham";
+    src: url("/public/fonts/FontsFree-Net-Gotham-Black.ttf");
+}
+@font-face {
+    font-family: "Helvetica";
+    src: url("/public/fonts/Helvetica-Bold-Font.ttf");
+}
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Roboto:wght@900&display=swap');
+@import url('https://www.dafontfree.net/embed/Z290aGFtLWJsYWNrJmRhdGEvNDYvZy82Mzg2MS9Hb3RoYW0tQmxhY2sub3Rm');*/
 :root {
     --bgColor: #6B1B1C;
     --textColor: #E6E5E7;
-    --headingFont: 'Times New Roman', sans-serif; 
-    --bodyFont: 'Times New Roman', sans-serif; 
+   /* --headingFont: 'Times New Roman', sans-serif;
+    --bodyFont: 'Times New Roman', sans-serif; */
+
+    --headingFont: 'Gotham', sans-serif;
+    --bodyFont: 'Times New Roman', sans-serif;
 
     /* --headingFont: 'Maitree', serif;
     --bodyFont: 'Maitree', serif; */
-
 }
 
                                                 
 
-html {
+/*html {
     font-size: 16px;
-}
+}*/
 
 * {
     margin: 0;
@@ -25,20 +46,20 @@ html {
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/*h1, h2, h3, h4, h5, h6 {
     font-family: var(--headingFont);
     font-weight: 900;
-}
+}*/
 
-body {
+/*body {
     font-family: var(--bodyFont);
 }
 
 p, label, span, a {
     font-size: 1rem;
     font-family: var(--bodyFont);
-    /*font-weight: 300;*/
-}
+    !*font-weight: 300;*!
+}*/
 
 .login-form {
     max-width: 500px;
@@ -70,7 +91,7 @@ p, label, span, a {
 .header {
     background-color: var(--bgColor);
     height: auto;
-    padding: 2rem 0 0;
+    /*padding: 2rem 0 0;*/
 }
 
 /* dip change */
@@ -78,7 +99,8 @@ p, label, span, a {
 .MainHead{
         display:flex;
         flex-direction: column;
-        align-items:center
+        align-items:center;
+    padding-top: 40px;
 
 }
 
@@ -87,6 +109,7 @@ p, label, span, a {
         display:flex;
         flex-direction: row;
         justify-content: space-between;
+        padding-bottom: 15pt;
 
 }
   }
@@ -97,6 +120,7 @@ p, label, span, a {
         display:flex;
         flex-direction: row;
         justify-content: space-between;
+        padding-bottom: 15pt;
 
 }
   }
@@ -164,8 +188,22 @@ p, label, span, a {
 .text-left {
     text-align: left;
 }
+.social-icon {
+    position: absolute;
+    top: 18px;
+    right: 40px;
+}
+.instagram-icon {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 24px; /* Adjust the font size as needed */
+    display: inline-block;
+}
 
 .logo {
+    font-family: 'Gotham', sans-serif;
     font-size: 3rem;
     color: var(--textColor);
     text-transform: uppercase;
@@ -207,9 +245,10 @@ p, label, span, a {
 }
 
 .nav_item {
+    font-family: 'Helvetica', sans-serif;
     text-transform: capitalize;
     color: #fff;
-    font-size: 28px;
+    font-size: 33pt;
     text-decoration: none;
     margin: 0px 15px;
     padding: 2px 0px;
@@ -226,16 +265,17 @@ p, label, span, a {
 .ant-layout-header{
     line-height: 30px!important;
 }
-.Header_Menu{
-    padding-top: 20px;
-    padding-bottom: 35px;
+
+.Header_Menu {
+    padding-top: 65px;
+    padding-bottom: 16px;
 }
 
 
     /* dip change */
 
 .page-space {
-    padding-top: 8rem;
+    /*padding-top: 8rem;*/
     padding-bottom: 8rem;
 
     /* margin-top: 8rem;
@@ -296,6 +336,9 @@ p, label, span, a {
     display: flex;
     flex-direction: row;
 }
+.ContactForm .formWrap{
+
+}
 
 @media (max-width: 767px) {
     
@@ -347,17 +390,17 @@ p, label, span, a {
 
 .home .search-label {
     /* text-align: center; */
+    font-family: 'Garamond', sans-serif;
     font-size: 2rem;
     letter-spacing:3px;
-    color: var(--bgColor);
+    color: white;
 }
 
   @media (max-width: 767px) {
     .home .search-label {
         /* text-align: center; */
         font-size: 2rem;
-       
-        color: var(--bgColor);
+        color: white;
     }
   }
   
@@ -430,7 +473,7 @@ p, label, span, a {
     padding: 2rem 1rem;
 }
 .primary-btn:hover {
-    background-color: #494848 !important;
+    background-color: var(--bgColor)!important;
 }
 
 
@@ -443,7 +486,7 @@ p, label, span, a {
     .page-space {
         /* margin-top: 5rem;
         margin-bottom: 5rem; */
-          padding-top: 5rem;
+          /*padding-top: 5rem;*/
           padding-bottom: 5rem; 
     }
     /* dip change  */
@@ -510,7 +553,6 @@ p, label, span, a {
     .Header_Menu{
         padding-top: 10px;
         padding-bottom: 10px;
-
         }
     .footer {
 
@@ -544,13 +586,14 @@ p, label, span, a {
         display:none
     }
     .nav_item {
+        font-family: 'Helvetica', sans-serif!important;
         text-transform: capitalize;
         color: #090909;
-        font-size: 22px;
+        font-size: 33pt;
         text-decoration: none;
         margin: 10px 0;
-        padding: 6px;
-        border-radius: 8px
+        padding: 13px 10px;
+        /* border-radius: 8px; */
     }
     .nav_item:hover{
         background-color: var(--bgColor);
