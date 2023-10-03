@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { MenuOutlined } from "@ant-design/icons";
+import {InstagramOutlined, MenuOutlined} from "@ant-design/icons";
 import handleRequest from "@/utilities/handleRequest";
 import localFont from "next/font/local";
 import Image from "next/image";
@@ -112,12 +112,7 @@ const RootLayout = ({ children }) => {
                           href="https://www.instagram.com/sortededucation/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
                           target="_blank"
                       >
-                        <Image
-                            src={InstagramLogo}
-                            width={30}
-                            height={30}
-                            alt="instagram"
-                        />
+                        <InstagramOutlined />
                       </Link>
                     </div>
                   </nav>
@@ -130,12 +125,7 @@ const RootLayout = ({ children }) => {
               href="https://www.instagram.com/sortededucation/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
               target="_blank"
             >
-              <Image
-                src={InstagramLogo}
-                width={30}
-                height={30}
-                alt="instagram"
-              />
+              <InstagramOutlined />
             </Link>
           </div>
         </Header>
