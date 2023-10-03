@@ -295,7 +295,10 @@ p, label, span, a {
 .home-description2 {
     font-family: var(--headingFont);
     font-size: 1.6rem;
-    color: var(--bgColor);
+    color: var(--darkText);
+}
+.contactUs-right {
+    margin-left: 2rem;
 }
 
 
@@ -369,6 +372,10 @@ p, label, span, a {
     }
     .social-icon-mobile {
         margin-left: .3rem;
+    }
+    .contactUs-right {
+        margin-left: 0;
+        margin-top: 3rem;
     }
 
 }
