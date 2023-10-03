@@ -48,7 +48,7 @@ const ContactUs = ({ contactUsPage }) => {
       <Head>
         <title>{contactUsPage?.seoTitle}</title>
       </Head>
-      <main style={ImageStyle}>
+      <main>
         <div
           className="container page-space contact"
           style={{ paddingTop: "5rem" }}
@@ -163,11 +163,11 @@ const ContactUs = ({ contactUsPage }) => {
               </div>
             </Col>
 
-            <Col xs={0} sm={0} md={2}></Col>
+            {/*<Col xs={0} sm={0} md={2}></Col>*/}
             <Col
               xs={24}
               sm={24}
-              md={11}
+              md={13}
               style={{ display: "flex", alignItems: "center" }}
             >
               <div className="contactUs-right">

@@ -53,7 +53,7 @@ export default function Home({ countries, subjects, qualifications, general }) {
         <meta name="description" content={general?.homePageMetaDescription} />
       </Head>
 
-      <main style={ImageStyle}>
+      <main>
 
         <div className={'banner-area'}>
           <Image
