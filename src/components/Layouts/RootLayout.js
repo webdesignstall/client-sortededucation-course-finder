@@ -107,6 +107,19 @@ const RootLayout = ({ children }) => {
                         />
                       );
                     })}
+                    <div className="social-icon-mobile">
+                      <Link
+                          href="https://www.instagram.com/sortededucation/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
+                          target="_blank"
+                      >
+                        <Image
+                            src={InstagramLogo}
+                            width={30}
+                            height={30}
+                            alt="instagram"
+                        />
+                      </Link>
+                    </div>
                   </nav>
                 </Drawer>
               </div>

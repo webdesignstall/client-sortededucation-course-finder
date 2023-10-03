@@ -5,7 +5,7 @@ import React from "react";
 import handleRequest from "@/utilities/handleRequest";
 import { useRouter } from "next/router";
 import HomeImage from "../../public/images/image-asset.jpeg";
-import HomeBanner from "../../public/images/zigzag.webp";
+import HomeBanner from "../../public/images/zigzagcroped.webp";
 import axiosInstance from "@/utilities/axiosInstance";
 import localFont from "next/font/local";
 import Image from "next/image";
@@ -55,9 +55,7 @@ export default function Home({ countries, subjects, qualifications, general }) {
 
       <main style={ImageStyle}>
 
-
-
-        <div className="container page-space home">
+        <div className={'banner-area'}>
           <Image
 
               src={HomeBanner}
@@ -70,6 +68,12 @@ export default function Home({ countries, subjects, qualifications, general }) {
                 marginTop: '2px'
               }}
           />
+
+
+        </div>
+
+
+        <div className="container page-space home">
 
 
           {/*search-label*/}
