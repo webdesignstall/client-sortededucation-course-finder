@@ -3,6 +3,7 @@
 :root {
     --bgColor: #6B1B1C;
     --textColor: #E6E5E7;
+    --darkText: #000000;
     /* --headingFont: 'Times New Roman', sans-serif;
      --bodyFont: 'Times New Roman', sans-serif; */
 
@@ -303,7 +304,7 @@ p, label, span, a {
 .about-us p,
 .services p,
 .contact p {
-    color: var(--bgColor);
+    color: var(--darkText);
     font-size: 1.56rem;
     margin-top: 2rem;
     line-height: 1.45em;
@@ -366,6 +367,9 @@ p, label, span, a {
     .ContactFormMain {
         margin-top: 50px
     }
+    .social-icon-mobile {
+        margin-left: .3rem;
+    }
 
 }
 
@@ -387,7 +391,7 @@ p, label, span, a {
 
 .contact .ant-form-item-label label,
 .home .ant-form-item-label label {
-    color: var(--bgColor);
+    color: var(--darkText);
     font-size: 1.2rem;
 }
 
