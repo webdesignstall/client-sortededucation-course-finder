@@ -74,7 +74,7 @@ const RootLayout = ({ children }) => {
               style={{ color: "white" }}
               href="/"
             >
-              {general?.logoText || "Sorted"}
+              {general?.logoText || "SORTED"}
             </Link>
             <div className="Header_Menu ">
               <div className="dextop">
