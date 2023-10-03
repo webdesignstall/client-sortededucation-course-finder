@@ -65,7 +65,7 @@ export default function Home({ countries, subjects, qualifications, general }) {
               style={{
                 width: "100%",
                 height: "auto",
-                maxHeight: "500px",
+                maxHeight: "400px",
                 marginTop: '2px'
               }}
           />
