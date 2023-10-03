@@ -5,7 +5,7 @@ import React from "react";
 import handleRequest from "@/utilities/handleRequest";
 import { useRouter } from "next/router";
 import HomeImage from "../../public/images/image-asset.jpeg";
-import HomeBanner from "../../public/images/home-banner.webp";
+import HomeBanner from "../../public/images/zigzag.webp";
 import axiosInstance from "@/utilities/axiosInstance";
 import localFont from "next/font/local";
 import Image from "next/image";
@@ -52,59 +52,65 @@ export default function Home({ countries, subjects, qualifications, general }) {
         <title>{general?.homePageSeoTileText || "Enroll and Excell"}</title>
         <meta name="description" content={general?.homePageMetaDescription} />
       </Head>
+
       <main style={ImageStyle}>
-        <Image
-          src={HomeBanner}
-          alt="Home banner"
-          sizes="100vw"
-          // Make the image display full width
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-        />
+
+
+
         <div className="container page-space home">
+          <Image
+
+              src={HomeBanner}
+              alt="Home banner"
+              sizes="100vw"
+              // Make the image display full width
+              style={{
+                width: "100%",
+                height: "auto",
+                marginTop: '2px'
+              }}
+          />
+
+
           {/*search-label*/}
           <Row>
             <Col md={24}>
               <h2
                 className={garamondItelic.className}
-                style={{
-                  fontSize: "61pt",
-                  fontWeight: "normal",
-                  marginBottom: "2rem",
-                  color: "var(--bgColor)",
-                }}
+                id={'startnow'}
               >
-                Start Now
+                Start Now...
               </h2>
               <p
-                style={{
-                  fontFamily: "Helvetica W01 Bold",
-                  fontSize: "25pt",
-                  color: "var(--bgColor)",
-                }}
+                  className={'home-description'}
+                // style={{
+                //   fontFamily: "Helvetica W01 Bold",
+                //   fontSize: "25pt",
+                //   color: "var(--bgColor)",
+                // }}
               >
-                Your gateway to ease the university application process
+                is your gateway to ease the university application process. We are a dedicated team committed to simplifying the university admissions journery.
               </p>
               <br />
               <p
-                style={{
-                  fontFamily: "Helvetica W01 Bold",
-                  fontSize: "25pt",
-                  color: "var(--bgColor)",
-                }}
+                // style={{
+                //   fontFamily: "Helvetica W01 Bold",
+                //   fontSize: "25pt",
+                //   color: "var(--bgColor)",
+                // }}
+                  className={'home-description2'}
               >
                 Select your <strong>subject of interest</strong> and get started
                 immediately
               </p>
               <h2
-                style={{
-                  fontFamily: "Helvetica W01 Bold",
-                  fontSize: "33pt",
-                  marginTop: "2rem",
-                  color: "var(--bgColor)",
-                }}
+                // style={{
+                //   fontFamily: "Helvetica W01 Bold",
+                //   fontSize: "33pt",
+                //   marginTop: "2rem",
+                //   color: "var(--bgColor)",
+                // }}
+                  className={'home-title'}
               >
                 {general?.homePageTile || "University Search"}
               </h2>

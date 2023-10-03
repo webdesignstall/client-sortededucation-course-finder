@@ -67,14 +67,13 @@ const ContactUs = ({ contactUsPage }) => {
                       <p
                         key={index}
                         className="text-justify"
-                        style={{
-                          fontSize: "1.3rem",
-                          width: "100%",
-                          textAlign: "justify",
-                          textJustify: "inter-word",
-                        }}
+                        // style={{
+                        //   fontSize: "1.3rem",
+                        //   width: "100%",
+                        //   textAlign: "justify",
+                        //   textJustify: "inter-word",
+                        // }}
                       >
-                        {" "}
                         {line}
                       </p>
                     </>

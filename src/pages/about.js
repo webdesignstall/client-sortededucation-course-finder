@@ -25,11 +25,6 @@ const AboutUs = ({ aboutUs }) => {
             <Col xs={24} sm={24} md={11}>
               <h2>{aboutUs?.pageTitle}</h2>
               <p
-                style={{
-                  fontFamily: "Helvetica W01 Bold",
-                  fontSize: "25pt",
-                  lineHeight: "32pt",
-                }}
               >
                 {aboutUs?.content}
               </p>
