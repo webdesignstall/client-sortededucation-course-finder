@@ -5,7 +5,7 @@ import React from "react";
 import handleRequest from "@/utilities/handleRequest";
 import { useRouter } from "next/router";
 import HomeImage from "../../public/images/image-asset.jpeg";
-import HomeBanner from "../../public/images/zigzagcroped.webp";
+import HomeBanner from "../../public/images/zigzag2.jpg";
 import axiosInstance from "@/utilities/axiosInstance";
 import localFont from "next/font/local";
 import Image from "next/image";
@@ -65,6 +65,7 @@ export default function Home({ countries, subjects, qualifications, general }) {
               style={{
                 width: "100%",
                 height: "auto",
+                maxHeight: "600px",
                 marginTop: '2px'
               }}
           />

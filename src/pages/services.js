@@ -21,7 +21,7 @@ const Services = ({ services, faqs }) => {
       <Head>
         <title>{services?.seoTitle}</title>
       </Head>
-      <main style={ImageStyle}>
+      <main>
         <div
           className="container page-space services"
           style={{ paddingTop: "5rem" }}
