@@ -2,7 +2,7 @@
 
 import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
-import { Button, Card, Col, Form, Input, Row } from "antd";
+import { Button, Col, Form, Input, Row } from "antd";
 import handleRequest from "@/utilities/handleRequest";
 import ContacImage from "../../public/images/image-asset.jpeg";
 import React from "react";
@@ -64,99 +64,90 @@ const ContactUs = ({ contactUsPage }) => {
                 >
                   {contactUsPage?.content?.split("\n").map((line, index) => (
                     <>
-                      <p
-                        key={index}
-                        className="text-justify"
-                        // style={{
-                        //   fontSize: "1.3rem",
-                        //   width: "100%",
-                        //   textAlign: "justify",
-                        //   textJustify: "inter-word",
-                        // }}
-                      >
+                      <p key={index} className="text-justify">
                         {line}
                       </p>
                     </>
                   ))}
-                  <Card style={{ margin: "3rem 0" }}>
-                    <Form
-                      form={form}
-                      className="ContactFormMain"
-                      name="contact"
-                      onFinish={onFinish}
-                      validateMessages={validateMessages}
-                      layout={"vertical"}
-                      style={{ width: "100%" }}
-                    >
-                      <div className="ContactForm">
-                        <div
-                          style={{ width: "100%", marginRight: "20px" }}
-                          className="formWrap"
+
+                  <Form
+                    form={form}
+                    className="ContactFormMain"
+                    name="contact"
+                    onFinish={onFinish}
+                    validateMessages={validateMessages}
+                    layout={"vertical"}
+                    style={{ width: "100%", margin: "3rem 0" }}
+                  >
+                    <div className="ContactForm">
+                      <div
+                        style={{ width: "100%", marginRight: "20px" }}
+                        className="formWrap"
+                      >
+                        <Form.Item
+                          name={"firstName"}
+                          label="First Name"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
                         >
-                          <Form.Item
-                            name={"firstName"}
-                            label="First Name"
-                            rules={[
-                              {
-                                required: true,
-                              },
-                            ]}
-                          >
-                            <Input style={{ width: "100%" }} size="large" />
-                          </Form.Item>
-                        </div>
-                        <div style={{ width: "100%" }}>
-                          <Form.Item
-                            name={"lastName"}
-                            label="Last Name"
-                            rules={[
-                              {
-                                required: true,
-                              },
-                            ]}
-                          >
-                            <Input style={{ width: "100%" }} size="large" />
-                          </Form.Item>
-                        </div>
+                          <Input style={{ width: "100%" }} size="large" />
+                        </Form.Item>
                       </div>
-
-                      <Form.Item
-                        name={"email"}
-                        label="Email"
-                        rules={[
-                          {
-                            required: true,
-                            type: "email",
-                          },
-                        ]}
-                      >
-                        <Input size={"large"} />
-                      </Form.Item>
-
-                      <Form.Item
-                        name={"message"}
-                        label="Message"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input.TextArea rows={4} />
-                      </Form.Item>
-
-                      <Form.Item>
-                        <Button
-                          className="primary-btn light-txt-btn"
-                          size={"large"}
-                          type="primary"
-                          htmlType="submit"
+                      <div style={{ width: "100%" }}>
+                        <Form.Item
+                          name={"lastName"}
+                          label="Last Name"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
                         >
-                          Submit
-                        </Button>
-                      </Form.Item>
-                    </Form>
-                  </Card>
+                          <Input style={{ width: "100%" }} size="large" />
+                        </Form.Item>
+                      </div>
+                    </div>
+
+                    <Form.Item
+                      name={"email"}
+                      label="Email"
+                      rules={[
+                        {
+                          required: true,
+                          type: "email",
+                        },
+                      ]}
+                    >
+                      <Input size={"large"} />
+                    </Form.Item>
+
+                    <Form.Item
+                      name={"message"}
+                      label="Message"
+                      rules={[
+                        {
+                          required: true,
+                        },
+                      ]}
+                    >
+                      <Input.TextArea rows={4} />
+                    </Form.Item>
+
+                    <Form.Item>
+                      <Button
+                        className="primary-btn light-txt-btn"
+                        size={"large"}
+                        type="primary"
+                        htmlType="submit"
+                      >
+                        Submit
+                      </Button>
+                    </Form.Item>
+                  </Form>
+
                   <p>Email us at abdulla@sortededucation.com</p>
                   <p>Call or WhatsApp: +973 36992110</p>
                 </div>

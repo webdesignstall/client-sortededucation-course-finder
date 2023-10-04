@@ -54,69 +54,37 @@ export default function Home({ countries, subjects, qualifications, general }) {
       </Head>
 
       <main>
-
-        <div className={'banner-area'}>
+        <div className={"banner-area"}>
           <Image
-
-              src={HomeBanner}
-              alt="Home banner"
-              sizes="100vw"
-              // Make the image display full width
-              style={{
-                width: "100%",
-                height: "auto",
-                maxHeight: "400px",
-                marginTop: '2px'
-              }}
+            src={HomeBanner}
+            alt="Home banner"
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto",
+              maxHeight: "400px",
+            }}
           />
-
-
         </div>
 
-
         <div className="container page-space home">
-
-
           {/*search-label*/}
           <Row>
             <Col md={24}>
-              <h2
-                className={garamondItelic.className}
-                id={'startnow'}
-              >
+              <h2 className={garamondItelic.className} id={"startnow"}>
                 Start Now...
               </h2>
-              <p
-                  className={'home-description'}
-                // style={{
-                //   fontFamily: "Helvetica W01 Bold",
-                //   fontSize: "25pt",
-                //   color: "var(--bgColor)",
-                // }}
-              >
-                is your gateway to ease the university application process. We are a dedicated team committed to simplifying the university admissions journery.
+              <p className={"home-description"}>
+                is your gateway to ease the university application process. We
+                are a dedicated team committed to simplifying the university
+                admissions journery.
               </p>
               <br />
-              <p
-                // style={{
-                //   fontFamily: "Helvetica W01 Bold",
-                //   fontSize: "25pt",
-                //   color: "var(--bgColor)",
-                // }}
-                  className={'home-description2'}
-              >
+              <p className={"home-description2"}>
                 Select your <strong>subject of interest</strong> and get started
                 immediately
               </p>
-              <h2
-                // style={{
-                //   fontFamily: "Helvetica W01 Bold",
-                //   fontSize: "33pt",
-                //   marginTop: "2rem",
-                //   color: "var(--bgColor)",
-                // }}
-                  className={'home-title'}
-              >
+              <h2 className={"home-title"}>
                 {general?.homePageTile || "University Search"}
               </h2>
               <div className="search-field">
