@@ -147,7 +147,7 @@ const ContactUs = ({ contactUsPage }) => {
 
                       <Form.Item>
                         <Button
-                          className="primary-btn"
+                          className="primary-btn light-txt-btn"
                           size={"large"}
                           type="primary"
                           htmlType="submit"

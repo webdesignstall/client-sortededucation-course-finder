@@ -71,7 +71,6 @@ const RootLayout = ({ children }) => {
           <div className={"container MainHead"}>
             <Link
               className={gotham.className + " logoText"}
-              style={{ color: "white" }}
               href="/"
             >
               {general?.logoText || "SORTED"}
