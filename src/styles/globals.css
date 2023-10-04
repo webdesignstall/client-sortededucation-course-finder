@@ -4,6 +4,7 @@
     --bgColor: #6B1B1C;
     --textColor: #E6E5E7;
     --darkText: #000000;
+    --lightText: #E6E5E7;
     /* --headingFont: 'Times New Roman', sans-serif;
      --bodyFont: 'Times New Roman', sans-serif; */
 
@@ -97,6 +98,10 @@ p, label, span, a {
 
 .logoText {
     font-size: 3.312rem;
+    color: var(--lightText);
+}
+.logoText:hover {
+    color: var(--lightText);
 }
 .home-title {
     font-size: 2rem;
@@ -132,8 +137,13 @@ p, label, span, a {
 
 .footer {
     background-color: var(--bgColor);
-    color: var(--textColor);
+    color: var(--lightText);
     padding: 90px 0;
+}
+.footer h2 {
+    font-family: var(--Helvatica);
+    font-size: 1.25rem;
+    font-weight: normal;
 }
 
 .footer-content {
@@ -208,7 +218,7 @@ p, label, span, a {
 .logo {
     font-family: 'Gotham', sans-serif;
     font-size: 3rem;
-    color: var(--textColor);
+    color: var(--lightText);
     text-transform: uppercase;
     font-weight: 900;
     line-height: 1.3em;
@@ -250,7 +260,7 @@ p, label, span, a {
 .nav_item {
     font-family: 'Helvetica', sans-serif;
     text-transform: capitalize;
-    color: #fff;
+    color: var(--lightText);
     font-size: 2rem;
     text-decoration: none;
     margin: 0px 15px;
@@ -263,8 +273,8 @@ p, label, span, a {
 }
 
 .nav_item_active {
-    color: #ffffff !important;
-    border-color: #ffffff;
+    color: var(--lightText);
+    border-color: var(--lightText);
 }
 
 .ant-layout-header {
@@ -360,12 +370,15 @@ p, label, span, a {
 
 }
 .social-icon svg {
-    color: #fff;
+    color: var(--lightText);
     font-size: 2.3rem;
 }
 .social-icon-mobile svg {
     font-size: 2.3rem;
     color: #000;
+}
+.light-txt-btn {
+    color: var(--lightText);
 }
 
 @media (max-width: 767px) {
@@ -628,6 +641,11 @@ p, label, span, a {
     padding: 15px !important;
 }
 
+.page-space.contact .ant-card {
+    background: none;
+    border: none;
+}
+
 @media (max-width: 767px) {
     .dextop {
         display: none
@@ -655,7 +673,7 @@ p, label, span, a {
     }
 
     .nav_item_active {
-        color: #ffffff !important;
+        color: var(--lightText) !important;
         background-color: #6B1B1C;
 
     }

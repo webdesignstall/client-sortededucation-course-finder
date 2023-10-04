@@ -224,7 +224,7 @@ export default function Home({ countries, subjects, qualifications, general }) {
                   <Form.Item>
                     <Button
                       size={"large"}
-                      className="primary-btn"
+                      className="primary-btn light-txt-btn"
                       type="primary"
                       htmlType="submit"
                     >
