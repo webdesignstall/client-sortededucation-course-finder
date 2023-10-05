@@ -84,9 +84,9 @@ export default function Home({ countries, subjects, qualifications, general }) {
                 Select your <strong>subject of interest</strong> and get started
                 immediately
               </p>
-              <h2 className={"home-title"}>
-                {general?.homePageTile || "University Search"}
-              </h2>
+              {/*<h2 className={"home-title"}>*/}
+              {/*  {general?.homePageTile || "University Search"}*/}
+              {/*</h2>*/}
               <div className="search-field">
                 <Form
                   name="contact"
