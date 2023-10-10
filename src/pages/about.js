@@ -4,6 +4,7 @@ import { Col, Row } from "antd";
 import Image from "next/image";
 import AboutImage from "../../public/images/62766.jpg";
 import handleRequest from "@/utilities/handleRequest";
+import React from "react";
 
 const AboutUs = ({ aboutUs }) => {
   const ImageStyle = {
@@ -24,10 +25,15 @@ const AboutUs = ({ aboutUs }) => {
           <Row className="about-row">
             <Col xs={24} sm={24} md={11}>
               <h2>{aboutUs?.pageTitle}</h2>
-              <p
+              {/*<p
               >
                 {aboutUs?.content}
-              </p>
+              </p>*/}
+              {aboutUs?.content?.split("\n").map((line, index) => (
+                <p key={index} className="text-justify">
+                  {line}
+                </p>
+              ))}
             </Col>
 
             <Col xs={0} sm={0} md={2}></Col>
