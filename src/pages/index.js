@@ -75,7 +75,7 @@ export default function Home({ countries, subjects, qualifications, general }) {
                 Start Now...
               </h2>
               <p className={"home-description"}>
-                is your gateway to ease the university application process. We
+                Your gateway to ease the university application process. We
                 are a dedicated team committed to simplifying the university
                 admissions journery.
               </p>
