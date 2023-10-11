@@ -61,7 +61,6 @@ const CourseQualification = () => {
       title: "Qualification Name",
       dataIndex: "name",
       key: "name",
-      render: (value, _) => value.toUpperCase(),
     },
     {
       title: "Created Date",

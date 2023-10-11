@@ -59,7 +59,6 @@ const CourseSubject = () => {
       title: "Subject Name",
       dataIndex: "name",
       key: "name",
-      render: (value, _) => value.toUpperCase(),
     },
     {
       title: "Created Date",

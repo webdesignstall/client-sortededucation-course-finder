@@ -47,7 +47,7 @@ const CourseForm = ({ courseId }) => {
         `/qualifications-dropdown`,
       );
 
-      const universities = await handleRequest("get", `/countries`);
+      const universities = await handleRequest("get", `/dropdown-universities`);
 
       if (subjects?.success) {
         setSubjects(subjects?.data);
@@ -148,23 +148,13 @@ const CourseForm = ({ courseId }) => {
                   },
                 ]}
               >
-                <Select size="large" placeholder="Select a Location" showSearch>
-                  {universities?.length
-                    ? universities?.map((item) => (
-                        <Option
-                          style={{
-                            fontWeight: "bold",
-                            padding: "10px",
-                          }}
-                          key={item?.id}
-                          value={item?.id}
-                        >
-                          {item?._id?.charAt(0)?.toUpperCase() +
-                            item?._id?.slice(1)}
-                        </Option>
-                      ))
-                    : ""}
-                </Select>
+                <Select
+                  size="large"
+                  placeholder="Select a University"
+                  showSearch
+                  filterOption={filterOption}
+                  options={universities}
+                />
               </Form.Item>
             </Col>
             <Col span={6}>

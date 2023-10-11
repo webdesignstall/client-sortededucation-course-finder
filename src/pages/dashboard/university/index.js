@@ -100,14 +100,13 @@ const CourseUniversity = () => {
       title: "University Name",
       dataIndex: "name",
       key: "name",
-      render: (value, _) => value?.toUpperCase(),
     },
     {
       title: "Logo",
       dataIndex: "logo",
       key: "logo",
-      render: (urls, items) => {
-        return <img width={180} src={urls?.secure_url} alt={items.name} />;
+      render: (urls, item) => {
+        return <img width={180} src={urls?.secure_url} alt={item?.name} />;
       },
     },
     {
