@@ -42,9 +42,7 @@ export default function Home({ countries, subjects, qualifications, general }) {
   };
 
   const filterOption = (inputValue, option) => {
-    return option.props.children
-      .toLowerCase()
-      .includes(inputValue.toLowerCase());
+    return option.label?.toLowerCase()?.includes(inputValue?.toLowerCase());
   };
   return (
     <>
@@ -75,8 +73,8 @@ export default function Home({ countries, subjects, qualifications, general }) {
                 Start Now...
               </h2>
               <p className={"home-description"}>
-                Your gateway to ease the university application process. We
-                are a dedicated team committed to simplifying the university
+                Your gateway to ease the university application process. We are
+                a dedicated team committed to simplifying the university
                 admissions journery.
               </p>
               <br />
@@ -108,23 +106,8 @@ export default function Home({ countries, subjects, qualifications, general }) {
                       placeholder="Select a Subject"
                       showSearch
                       filterOption={filterOption}
-                    >
-                      {subjects?.length
-                        ? subjects?.map((item) => (
-                            <Option
-                              style={{
-                                textTransform: "uppercase",
-                                fontWeight: "bold",
-                                padding: "10px",
-                              }}
-                              key={item?._id}
-                              value={item?._id}
-                            >
-                              {item?.name}
-                            </Option>
-                          ))
-                        : ""}
-                    </Select>
+                      options={subjects}
+                    />
                   </Form.Item>
                   <Form.Item
                     name={"qaulification"}
@@ -140,23 +123,8 @@ export default function Home({ countries, subjects, qualifications, general }) {
                       placeholder="Select a Qualification"
                       showSearch
                       filterOption={filterOption}
-                    >
-                      {qualifications?.length
-                        ? qualifications?.map((item) => (
-                            <Option
-                              style={{
-                                textTransform: "uppercase",
-                                fontWeight: "bold",
-                                padding: "10px",
-                              }}
-                              key={item?._id}
-                              value={item?._id}
-                            >
-                              {item?.name}
-                            </Option>
-                          ))
-                        : ""}
-                    </Select>
+                      options={qualifications}
+                    />
                   </Form.Item>
                   <Form.Item
                     name={"location"}
@@ -176,14 +144,14 @@ export default function Home({ countries, subjects, qualifications, general }) {
                         ? countries?.map((item) => (
                             <Option
                               style={{
-                                textTransform: "uppercase",
                                 fontWeight: "bold",
                                 padding: "10px",
                               }}
                               key={item?.id}
                               value={item?._id}
                             >
-                              {item?._id}
+                              {item?._id?.charAt(0)?.toUpperCase() +
+                                item?._id?.slice(1)}
                             </Option>
                           ))
                         : ""}
@@ -214,10 +182,10 @@ Home.getLayout = function getLayout(page) {
 };
 
 export async function getServerSideProps() {
-  const responseSubjects = await handleRequest("get", `/course-subjects`);
+  const responseSubjects = await handleRequest("get", `/subjects-dropdown`);
   const responseQualifications = await handleRequest(
     "get",
-    `/course-qualifications`,
+    `/qualifications-dropdown`,
   );
   const responseUniversities = await handleRequest("get", `/countries`);
 

@@ -40,14 +40,14 @@ const CourseForm = ({ courseId }) => {
 
   useEffect(() => {
     (async () => {
-      const subjects = await handleRequest("get", `/course-subjects`);
+      const subjects = await handleRequest("get", `/subjects-dropdown`);
 
       const qualification = await handleRequest(
         "get",
-        `/course-qualifications`,
+        `/qualifications-dropdown`,
       );
 
-      const universities = await handleRequest("get", `/universities`);
+      const universities = await handleRequest("get", `/countries`);
 
       if (subjects?.success) {
         setSubjects(subjects?.data);
@@ -60,6 +60,12 @@ const CourseForm = ({ courseId }) => {
       }
     })();
   }, []);
+
+  const filterOption = (inputValue, option) => {
+    return option.label?.toLowerCase()?.includes(inputValue?.toLowerCase());
+  };
+
+  console.log(universities);
 
   return (
     <>
@@ -102,23 +108,13 @@ const CourseForm = ({ courseId }) => {
                   },
                 ]}
               >
-                <Select size="large" placeholder="Select a Subject" showSearch>
-                  {subjects?.length
-                    ? subjects?.map((subject) => (
-                        <Option
-                          style={{
-                            textTransform: "uppercase",
-                            fontWeight: "bold",
-                            padding: "10px",
-                          }}
-                          key={subject?._id}
-                          value={subject?._id}
-                        >
-                          {subject?.name}
-                        </Option>
-                      ))
-                    : ""}
-                </Select>
+                <Select
+                  size="large"
+                  placeholder="Select a Subject"
+                  showSearch
+                  filterOption={filterOption}
+                  options={subjects}
+                />
               </Form.Item>
             </Col>
             <Col span={6}>
@@ -136,23 +132,9 @@ const CourseForm = ({ courseId }) => {
                   size="large"
                   placeholder="Select a Qualification"
                   showSearch
-                >
-                  {qualifications?.length
-                    ? qualifications?.map((item) => (
-                        <Option
-                          style={{
-                            textTransform: "uppercase",
-                            fontWeight: "bold",
-                            padding: "10px",
-                          }}
-                          key={item?._id}
-                          value={item?._id}
-                        >
-                          {item?.name}
-                        </Option>
-                      ))
-                    : ""}
-                </Select>
+                  filterOption={filterOption}
+                  options={qualifications}
+                />
               </Form.Item>
             </Col>
             <Col span={6}>
@@ -166,23 +148,19 @@ const CourseForm = ({ courseId }) => {
                   },
                 ]}
               >
-                <Select
-                  size="large"
-                  placeholder="Select a University"
-                  showSearch
-                >
+                <Select size="large" placeholder="Select a Location" showSearch>
                   {universities?.length
                     ? universities?.map((item) => (
                         <Option
                           style={{
-                            textTransform: "uppercase",
                             fontWeight: "bold",
                             padding: "10px",
                           }}
-                          key={item?._id}
-                          value={item?._id}
+                          key={item?.id}
+                          value={item?.id}
                         >
-                          {item?.name}
+                          {item?._id?.charAt(0)?.toUpperCase() +
+                            item?._id?.slice(1)}
                         </Option>
                       ))
                     : ""}
