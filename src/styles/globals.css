@@ -462,7 +462,7 @@ p, label, span, a {
 
 
 .search-result p {
-    color: var(--bgColor);
+    color: var(--darkText);
 
 }
 
