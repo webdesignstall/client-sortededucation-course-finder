@@ -31,7 +31,6 @@ const CourseList = () => {
       title: "Course Name",
       dataIndex: "name",
       key: "name",
-      render: (value) => value.toUpperCase(),
     },
     {
       title: "University",

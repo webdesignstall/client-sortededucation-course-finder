@@ -35,24 +35,34 @@ const columns = [
         // <div dangerouslySetInnerHTML={{__html: text}}/>
         <>
           {items?.tuitionFees.length > 0 ? (
-            <p>Tuition Fees: {items?.tuitionFees}</p>
+            <p>
+              <strong>Tuition Fees:</strong> {items?.tuitionFees}
+            </p>
           ) : (
             ""
           )}
           {items?.totalStudents.length > 0 ? (
-            <p>Number of Students: {items?.totalStudents}</p>
+            <p>
+              <strong>Number of Students:</strong> {items?.totalStudents}
+            </p>
           ) : (
             ""
           )}
           {text?.label.length > 0 && text?.value?.length > 0 ? (
             <p>
-              {text?.label}: {text?.value}
+              <strong>{text?.label}:</strong> {text?.value}
             </p>
           ) : (
             ""
           )}
 
-          {items?.campus?.length > 0 ? <p>Campus: {items?.campus}</p> : ""}
+          {items?.campus?.length > 0 ? (
+            <p>
+              <strong>Campus:</strong> {items?.campus}
+            </p>
+          ) : (
+            ""
+          )}
         </>
       );
     },
