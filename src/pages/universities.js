@@ -34,21 +34,21 @@ const columns = [
       return (
         // <div dangerouslySetInnerHTML={{__html: text}}/>
         <>
-          {items?.tuitionFees.length > 0 ? (
+          {items?.tuitionFees?.length > 0 ? (
             <p>
               <strong>Tuition Fees:</strong> {items?.tuitionFees}
             </p>
           ) : (
             ""
           )}
-          {items?.totalStudents.length > 0 ? (
+          {items?.totalStudents?.length > 0 ? (
             <p>
               <strong>Number of Students:</strong> {items?.totalStudents}
             </p>
           ) : (
             ""
           )}
-          {text?.label.length > 0 && text?.value?.length > 0 ? (
+          {text?.label?.length > 0 && text?.value?.length > 0 ? (
             <p>
               <strong>{text?.label}:</strong> {text?.value}
             </p>
